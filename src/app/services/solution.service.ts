@@ -6,7 +6,7 @@ import { Solution } from '../models/Solution';
   providedIn: 'root'
 })
 export class SolutionService {
-  baseUrl = 'http://localhost:8080/solutions/';
+  baseUrl = 'https://puzzles-app.herokuapp.com/solutions/';
 
   constructor(private http: HttpClient) { }
 

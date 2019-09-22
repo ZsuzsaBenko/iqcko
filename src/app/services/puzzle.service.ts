@@ -9,7 +9,7 @@ import { Level } from '../models/Level';
   providedIn: 'root'
 })
 export class PuzzleService {
-  baseUrl = 'http://localhost:8080/puzzles/';
+  baseUrl = 'https://puzzles-app.herokuapp.com/puzzles/';
 
 
   constructor(private http: HttpClient) {

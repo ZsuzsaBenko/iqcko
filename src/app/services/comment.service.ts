@@ -7,7 +7,7 @@ import { PuzzleComment } from '../models/PuzzleComment';
   providedIn: 'root'
 })
 export class CommentService {
-  baseUrl = 'http://localhost:8080/comments/';
+  baseUrl = 'https://puzzles-app.herokuapp.com/comments/';
 
   constructor(private http: HttpClient) {
   }

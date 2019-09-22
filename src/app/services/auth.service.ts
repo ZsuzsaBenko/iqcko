@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  url = 'http://localhost:8080/login';
+  url = 'https://puzzles-app.herokuapp.com/login';
 
   constructor(private http: HttpClient) {
   }

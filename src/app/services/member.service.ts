@@ -6,7 +6,7 @@ import { Member } from '../models/Member';
   providedIn: 'root'
 })
 export class MemberService {
-  baseUrl = 'http://localhost:8080/members/';
+  baseUrl = 'https://puzzles-app.herokuapp.com/members/';
 
 
   constructor(private http: HttpClient) { }

@@ -8,7 +8,7 @@ import {Member} from '../models/Member';
   providedIn: 'root'
 })
 export class RegistrationService {
-  url = 'http://localhost:8080/registration';
+  url = 'https://puzzles-app.herokuapp.com/registration';
 
   constructor(private http: HttpClient) {
   }
