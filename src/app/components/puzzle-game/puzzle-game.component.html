@@ -19,7 +19,7 @@
           </p>
           <div class="puzzle-item">
             <p *ngIf="puzzle.category.toString() !== 'PICTURE_PUZZLE'" class="preserve-newline">{{ puzzle.puzzleItem }}</p>
-            <img src="http://localhost:8080/image-resource/{{ puzzle.puzzleItem }}" alt="puzzle"
+            <img src="https://firebasestorage.googleapis.com/v0/b/puzzles-a6dd7.appspot.com/o/{{ puzzle.puzzleItem }}" alt="puzzle"
                  *ngIf="puzzle.category.toString() === 'PICTURE_PUZZLE'">
           </div>
           <p class="rating">

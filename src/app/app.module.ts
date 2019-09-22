@@ -4,6 +4,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RatingModule } from 'ng-starrating';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 
@@ -48,7 +51,9 @@ import { RegLoginComponent } from './components/welcome/reg-login/reg-login.comp
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RatingModule
+    RatingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [
     {

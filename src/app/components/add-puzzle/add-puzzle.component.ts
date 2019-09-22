@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 import { PuzzleService } from '../../services/puzzle.service';
 import { Puzzle } from '../../models/Puzzle';
 import { Category } from '../../models/Category';
-import { UploadService } from '../../services/upload.service';
 import { ErrorHandlerService } from '../../services/error-handler.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class AddPuzzleComponent implements OnInit {
   errorMessage = '';
 
   constructor(private puzzleService: PuzzleService,
-              private uploadService: UploadService,
+              private storage: AngularFireStorage,
               private errorHandlerService: ErrorHandlerService,
               private router: Router) {
   }
@@ -61,10 +61,6 @@ export class AddPuzzleComponent implements OnInit {
       this.puzzle.instruction = form.value.instruction;
       this.puzzle.puzzleItem = form.value['puzzle-item'];
     }
-    if (form.value.category === 'PICTURE_PUZZLE') {
-      this.puzzle.instruction = form.value['instruction-picture'];
-      this.puzzle.puzzleItem = this.image.name;
-    }
     this.addNewPuzzle(form);
   }
 
@@ -72,14 +68,7 @@ export class AddPuzzleComponent implements OnInit {
     if (this.puzzle.category !== Category.PICTURE_PUZZLE.toString()) {
       this.sendPuzzleData(form);
     } else {
-      this.uploadService.uploadImage(this.image).subscribe(() => {
-        this.sendPuzzleData(form);
-      },
-      error => {
-        this.onError(error);
-        form.reset();
-      });
-
+      this.uploadPicturePuzzle(form);
     }
   }
 
@@ -92,6 +81,20 @@ export class AddPuzzleComponent implements OnInit {
       this.onError(error);
       form.reset();
     });
+  }
+
+  uploadPicturePuzzle(form: NgForm) {
+    const imageRef = this.storage.ref(this.image.name);
+    imageRef.put(this.image).then( () => {
+      imageRef.getDownloadURL().subscribe( url => {
+        const fullURL = url.toString();
+        const index = fullURL.indexOf('.com/o/');
+        this.puzzle.puzzleItem = fullURL.substring(index + 7);
+        this.puzzle.instruction = form.value['instruction-picture'];
+        this.sendPuzzleData(form);
+      });
+    })
+      .catch( error => this.errorMessage = 'A kép mérete legfeljebb 2 MB lehet.');
   }
 
   onError(error: HttpErrorResponse) {
