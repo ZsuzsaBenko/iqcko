@@ -71,20 +71,13 @@ export class RegLoginComponent implements OnInit {
       },
       error => {
         this.message = this.errorHandlerService.handleHttpErrorResponse(error);
-        if (this.message.startsWith('Nem vagy bejelentkezve')) {
-          this.message = 'Érvénytelen email cím vagy jelszó. Próbáld újra!';
-        }
         this.form.reset();
       });
   }
 
   register(member: Member) {
     this.registrationService.registerNewMember(member).subscribe((response) => {
-      if (response == null) {
-        this.message = 'Ezt az email címet már regisztrálták. Ha a Tiéd, jelentkezz be!';
-      } else {
-        this.message = `Kedves ${response.username}! Sikeresen regisztráltál. Jelentkezz be!`;
-      }
+      this.message = `Kedves ${response.username}! Sikeresen regisztráltál. Jelentkezz be!`;
       this.form.reset();
     }, error => {
       this.message = this.errorHandlerService.handleHttpErrorResponse(error);
