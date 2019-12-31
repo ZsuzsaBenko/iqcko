@@ -4,6 +4,9 @@
       <ul>
         <li id="logo">IQckó</li>
         <li class="dropdown">
+          <a *ngIf="isAdmin" routerLink="/admin"><fa-icon [icon]="faUnlockAlt" class="fas"></fa-icon></a>
+        </li>
+        <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <fa-icon [icon]="faUser" class="fas"></fa-icon>
             <fa-icon [icon]="faCaretDown" class="fas fa-caret-down"></fa-icon>
