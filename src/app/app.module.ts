@@ -27,6 +27,7 @@ import { MyCommentsComponent } from './components/profile/my-comments/my-comment
 import { CommentComponent } from './components/comment/comment.component';
 import { AddPuzzleComponent } from './components/add-puzzle/add-puzzle.component';
 import { RegLoginComponent } from './components/welcome/reg-login/reg-login.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { RegLoginComponent } from './components/welcome/reg-login/reg-login.comp
     MyCommentsComponent,
     CommentComponent,
     AddPuzzleComponent,
-    RegLoginComponent
+    RegLoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

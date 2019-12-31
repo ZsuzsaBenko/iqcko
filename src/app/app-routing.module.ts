@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuardService } from './services/auth-guard.service';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HomeComponent } from './components/home/home.component';
 import { PuzzlesComponent } from './components/puzzles/puzzles.component';
@@ -9,6 +10,7 @@ import { PuzzleGameComponent } from './components/puzzle-game/puzzle-game.compon
 import { ProfileComponent } from './components/profile/profile.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { AddPuzzleComponent } from './components/add-puzzle/add-puzzle.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -23,6 +25,7 @@ const routes: Routes = [
   {path: 'puzzles/:id', canActivate: [AuthGuardService], component: PuzzleGameComponent, pathMatch: 'full'},
   {path: 'puzzles/:id/comments', canActivate: [AuthGuardService], component: CommentComponent},
   {path: 'profile', canActivate: [AuthGuardService], component: ProfileComponent},
+  {path: 'admin', canActivate: [AdminAuthGuardService], component: AdminComponent},
   {path: '**', redirectTo: 'home'}
 ];
 
