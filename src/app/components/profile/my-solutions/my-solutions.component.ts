@@ -5,6 +5,12 @@ import { SolutionService } from '../../../services/solution.service';
 import { PuzzleService } from '../../../services/puzzle.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 
+import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
+import { faSquareRootAlt } from '@fortawesome/free-solid-svg-icons/faSquareRootAlt';
+import { faDice } from '@fortawesome/free-solid-svg-icons/faDice';
+import { faFont } from '@fortawesome/free-solid-svg-icons/faFont';
+import { faPenFancy } from '@fortawesome/free-solid-svg-icons/faPenFancy';
+
 @Component({
   selector: 'app-my-solutions',
   templateUrl: './my-solutions.component.html',
@@ -14,6 +20,11 @@ export class MySolutionsComponent implements OnInit {
   solutions: Solution[];
   isVisible = false;
   errorMessage = '';
+  faQuestion = faQuestion;
+  faSquareRootAlt = faSquareRootAlt;
+  faDice = faDice;
+  faFont = faFont;
+  faPenFancy = faPenFancy;
 
   constructor(private solutionService: SolutionService,
               private puzzleService: PuzzleService,

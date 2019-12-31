@@ -3,6 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { Puzzle } from '../../../models/Puzzle';
 import { PuzzleService } from '../../../services/puzzle.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
+import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons/faStarHalfAlt';
+import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
+import { faSquareRootAlt } from '@fortawesome/free-solid-svg-icons/faSquareRootAlt';
+import { faDice } from '@fortawesome/free-solid-svg-icons/faDice';
+import { faFont } from '@fortawesome/free-solid-svg-icons/faFont';
+import { faPenFancy } from '@fortawesome/free-solid-svg-icons/faPenFancy';
 
 @Component({
   selector: 'app-my-puzzles',
@@ -13,6 +20,13 @@ export class MyPuzzlesComponent implements OnInit {
   isVisible = false;
   puzzles: Puzzle[];
   errorMessage = '';
+  faStar = faStar;
+  faStarHalfAlt = faStarHalfAlt;
+  faQuestion = faQuestion;
+  faSquareRootAlt = faSquareRootAlt;
+  faDice = faDice;
+  faFont = faFont;
+  faPenFancy = faPenFancy;
 
   constructor(private puzzleService: PuzzleService,
               private errorHandlerService: ErrorHandlerService) { }

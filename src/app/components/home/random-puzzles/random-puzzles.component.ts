@@ -5,6 +5,12 @@ import { Puzzle } from '../../../models/Puzzle';
 import { PuzzleService } from '../../../services/puzzle.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight';
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
+import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons/faStarHalfAlt';
+
+
 @Component({
   selector: 'app-random-puzzles',
   templateUrl: './random-puzzles.component.html',
@@ -18,6 +24,10 @@ export class RandomPuzzlesComponent implements OnInit {
   isFetching = true;
   errorMessage = '';
   showError = false;
+  faChevronLeft = faChevronLeft;
+  faChevronRight = faChevronRight;
+  faStar = faStar;
+  faStarHalfAlt = faStarHalfAlt;
 
   constructor(private puzzleService: PuzzleService,
               private errorHandlerService: ErrorHandlerService) {

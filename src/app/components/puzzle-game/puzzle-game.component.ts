@@ -10,6 +10,9 @@ import { StarRatingComponent } from 'ng-starrating';
 import { SolutionService } from '../../services/solution.service';
 import { ErrorHandlerService } from '../../services/error-handler.service';
 
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
+import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons/faStarHalfAlt';
+
 @Component({
   selector: 'app-puzzle-item',
   templateUrl: './puzzle-game.component.html',
@@ -25,6 +28,8 @@ export class PuzzleGameComponent implements OnInit {
   errorMessage = '';
   showError = false;
   failedToSendSolution = false;
+  faStar = faStar;
+  faStarHalfAlt = faStarHalfAlt;
 
   constructor(private puzzleService: PuzzleService,
               private solutionService: SolutionService,

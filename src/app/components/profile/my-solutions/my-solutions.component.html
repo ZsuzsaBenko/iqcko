@@ -15,11 +15,11 @@
             <p>Dátum: <span>{{ solution.submissionTime | date: 'yyyy. MM. dd.' }}</span></p>
             <p>Gyorsaság: <span>{{ countSpeed(solution.seconds) }}</span></p>
             <div class="category-pic">
-              <i class="fas fa-question" *ngIf="solution.puzzle.category.toString() === 'RIDDLE'"></i>
-              <i class="fas fa-square-root-alt" *ngIf="solution.puzzle.category.toString() === 'MATH_PUZZLE'"></i>
-              <i class="fas fa-dice" *ngIf="solution.puzzle.category.toString() === 'PICTURE_PUZZLE'"></i>
-              <i class="fas fa-font" *ngIf="solution.puzzle.category.toString() === 'WORD_PUZZLE'"></i>
-              <i class="fas fa-pen-fancy" *ngIf="solution.puzzle.category.toString() === 'CIPHER'"></i>
+              <fa-icon [icon]="faQuestion" class="fas" *ngIf="solution.puzzle.category.toString() === 'RIDDLE'"></fa-icon>
+              <fa-icon [icon]="faSquareRootAlt" class="fas" *ngIf="solution.puzzle.category.toString() === 'MATH_PUZZLE'"></fa-icon>
+              <fa-icon [icon]="faDice" class="fas" *ngIf="solution.puzzle.category.toString() === 'PICTURE_PUZZLE'"></fa-icon>
+              <fa-icon [icon]="faFont" class="fas" *ngIf="solution.puzzle.category.toString() === 'WORD_PUZZLE'"></fa-icon>
+              <fa-icon [icon]="faPenFancy" class="fas" *ngIf="solution.puzzle.category.toString() === 'CIPHER'"></fa-icon>
             </div>
           </div>
         </a>

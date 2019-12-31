@@ -32,7 +32,8 @@
                   <span id="date"> {{ puzzle.submissionTime | date:'yyyy. MM. dd.' }}</span>
                 </p>
                 <h3>
-                  <span *ngIf="puzzle.solved" class="solved"><i class="fas fa-check"></i></span>{{ puzzle.title }}
+                  <span *ngIf="puzzle.solved" class="solved"> <fa-icon [icon]="faCheck" class="fas fa-check"></fa-icon>
+                  </span>{{ puzzle.title }}
                 </h3>
                 <p class="puzzle-info">Kategória:
                   <span>{{ puzzleService.translateCategory(puzzle.category) | uppercase }}</span>
@@ -41,16 +42,16 @@
                   <span>{{ puzzleService.translateLevel(puzzle.level) | uppercase }}</span>
                 </p>
                 <p class="rating">
-                  <i class="fas fa-star-half-alt" *ngIf="puzzle.rating > 0 && puzzle.rating < 1"></i>
-                  <i class="fas fa-star" *ngIf="puzzle.rating >= 1"></i>
-                  <i class="fas fa-star-half-alt" *ngIf="puzzle.rating > 1 && puzzle.rating < 2"></i>
-                  <i class="fas fa-star" *ngIf="puzzle.rating >= 2"></i>
-                  <i class="fas fa-star-half-alt" *ngIf="puzzle.rating > 2 && puzzle.rating < 3"></i>
-                  <i class="fas fa-star" *ngIf="puzzle.rating >= 3"></i>
-                  <i class="fas fa-star-half-alt" *ngIf="puzzle.rating > 3 && puzzle.rating < 4"></i>
-                  <i class="fas fa-star" *ngIf="puzzle.rating >= 4"></i>
-                  <i class="fas fa-star-half-alt" *ngIf="puzzle.rating > 4 && puzzle.rating < 5"></i>
-                  <i class="fas fa-star" *ngIf="puzzle.rating === 5"></i>
+                  <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="puzzle.rating > 0 && puzzle.rating < 1"></fa-icon>
+                  <fa-icon [icon]="faStar" class="fas" *ngIf="puzzle.rating >= 1"></fa-icon>
+                  <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="puzzle.rating > 1 && puzzle.rating < 2"></fa-icon>
+                  <fa-icon [icon]="faStar" class="fas" *ngIf="puzzle.rating >= 2"></fa-icon>
+                  <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="puzzle.rating > 2 && puzzle.rating < 3"></fa-icon>
+                  <fa-icon [icon]="faStar" class="fas" *ngIf="puzzle.rating >= 3"></fa-icon>
+                  <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="puzzle.rating > 3 && puzzle.rating < 4"></fa-icon>
+                  <fa-icon [icon]="faStar" class="fas" *ngIf="puzzle.rating >= 4"></fa-icon>
+                  <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="puzzle.rating > 4 && puzzle.rating < 5"></fa-icon>
+                  <fa-icon [icon]="faStar" class="fas" *ngIf="puzzle.rating === 5"></fa-icon>
                   <span id="no-rating" *ngIf="puzzle.rating === 0">Még nincs értékelés.</span>
                   <button type="button" routerLink="/puzzles/{{ puzzle.id }}">Megoldom!</button>
                   <button type="button" routerLink="/puzzles/{{ puzzle.id }}/comments">Hozzászólások</button>

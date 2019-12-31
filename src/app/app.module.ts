@@ -7,6 +7,7 @@ import { RatingModule } from 'ng-starrating';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 
@@ -53,7 +54,8 @@ import { RegLoginComponent } from './components/welcome/reg-login/reg-login.comp
     FormsModule,
     RatingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FontAwesomeModule
   ],
   providers: [
     {

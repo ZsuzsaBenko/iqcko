@@ -8,6 +8,9 @@ import { Category } from '../../models/Category';
 import { NgForm } from '@angular/forms';
 import { ErrorHandlerService } from '../../services/error-handler.service';
 import { SolutionService } from '../../services/solution.service';
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
+import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons/faStarHalfAlt';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 
 @Component({
   selector: 'app-puzzles',
@@ -21,6 +24,9 @@ export class PuzzlesComponent implements OnInit {
   isFetching = true;
   errorMessage = '';
   showError = false;
+  faStar = faStar;
+  faStarHalfAlt = faStarHalfAlt;
+  faCheck = faCheck;
 
   constructor(private puzzleService: PuzzleService,
               private solutionService: SolutionService,
