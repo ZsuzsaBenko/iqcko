@@ -10,7 +10,7 @@
         </div>
         <div *ngIf="!showError && !isFetching"
           class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 puzzle-container">
-          <p class="puzzle-info">Beküldő: <span>{{ puzzle.member.username }}</span>
+          <p *ngIf="puzzle.member !== null" class="puzzle-info">Beküldő: <span>{{ puzzle.member.username }}</span>
             <span id="date"> {{ puzzle.submissionTime | date:'yyyy. MM. dd.' }}</span>
           </p>
           <h1>{{ puzzle.title }}</h1>
