@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -17,7 +18,7 @@ export class AuthService {
     return data.indexOf('ADMIN') >= 0;
   }
 
-  login(data: {email: string, password: string}) {
+  login(data: {email: string, password: string}): Observable<any> {
     return this.http.post(this.url, data);
   }
 }

@@ -32,7 +32,7 @@ export class MySolutionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.solutionService.getMySolutions().subscribe(solutions => {
+    this.solutionService.getAllSolutionsByLoggedInMember().subscribe(solutions => {
       this.solutions = solutions;
     },
     error => {

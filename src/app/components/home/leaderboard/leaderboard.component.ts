@@ -28,7 +28,7 @@ export class LeaderboardComponent implements OnInit {
       this.onError(error);
     });
 
-    this.memberService.getLoggedInMember().subscribe(member => {
+    this.memberService.getLoggedInMemberProfile().subscribe(member => {
       this.loggedInMember = member;
     },
       error => {

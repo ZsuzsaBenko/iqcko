@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AdminService } from '../../services/admin.service';
 import { ErrorHandlerService } from '../../services/error-handler.service';
 import { Member } from '../../models/Member';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import {MemberService} from '../../services/member.service';
 
 @Component({
   selector: 'app-admin',
@@ -20,11 +20,11 @@ export class AdminComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
 
-  constructor(private adminService: AdminService,
+  constructor(private memberService: MemberService,
               private errorHandlerService: ErrorHandlerService) { }
 
   ngOnInit() {
-    this.adminService.getAllMembers().subscribe( members => {
+    this.memberService.getAllMembers().subscribe( members => {
       this.members = members;
     },
     error => {
@@ -36,7 +36,7 @@ export class AdminComponent implements OnInit {
     if (!confirm('Biztosan törölni akarod ezt a felhasználót?')) {
       return;
     }
-    this.adminService.deleteMember(id).subscribe(() => console.log(`Member with id ${id} deleted.`),
+    this.memberService.deleteMember(id).subscribe(() => console.log(`Member with id ${id} deleted.`),
       (error => this.onError(error)));
   }
 

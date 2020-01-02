@@ -19,7 +19,7 @@ export class MyCommentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.commentService.getCommentsByMember().subscribe(comments => {
+    this.commentService.getLatestCommentsByLoggedInMember().subscribe(comments => {
       this.comments = comments;
     },
       error => {

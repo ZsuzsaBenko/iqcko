@@ -32,7 +32,7 @@ export class MyPuzzlesComponent implements OnInit {
               private errorHandlerService: ErrorHandlerService) { }
 
   ngOnInit() {
-    this.puzzleService.getPuzzlesByMember().subscribe( puzzles => {
+    this.puzzleService.getAllPuzzlesByLoggedInMember().subscribe(puzzles => {
       this.puzzles = puzzles;
     },
     error => {

@@ -83,7 +83,7 @@ export class PuzzleGameComponent implements OnInit {
     solution.seconds = diff;
     solution.rating = this.rating;
 
-    this.solutionService.sendSolution(solution).subscribe(() => {
+    this.solutionService.saveSolution(solution).subscribe(() => {
       this.location.back();
     },
     error => {

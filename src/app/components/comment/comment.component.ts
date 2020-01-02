@@ -32,7 +32,7 @@ export class CommentComponent implements OnInit {
     const puzzleId = activeUrl.substring(firstComma + 1, lastComma);
     this.puzzleId = +puzzleId;
 
-    this.commentService.getCommentsByPuzzle(this.puzzleId).subscribe(comments => {
+    this.commentService.getAllCommentsByPuzzle(this.puzzleId).subscribe(comments => {
       this.comments = comments;
       this.isFetching = false;
     },

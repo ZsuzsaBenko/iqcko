@@ -25,7 +25,7 @@ export class MyDataComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.memberService.getLoggedInMember().subscribe(member => {
+    this.memberService.getLoggedInMemberProfile().subscribe(member => {
       this.member = member;
       this.isFetching = false;
     },
@@ -65,11 +65,11 @@ export class MyDataComponent implements OnInit {
   }
 
   updateMember(form: NgForm, member: Member) {
-    this.memberService.updateMember(member).subscribe(() => {
+    this.memberService.updateLoggedInMemberProfile(member).subscribe(() => {
         form.reset();
         this.invalidPassword = false;
         this.isFormVisible = false;
-        this.memberService.getLoggedInMember().subscribe(updatedMember => {
+        this.memberService.getLoggedInMemberProfile().subscribe(updatedMember => {
             this.member = updatedMember;
           },
           error =>  {

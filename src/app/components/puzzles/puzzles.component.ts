@@ -84,7 +84,7 @@ export class PuzzlesComponent implements OnInit {
   }
 
   markSolvedPuzzles() {
-    this.solutionService.getMySolutions().subscribe(solutions => {
+    this.solutionService.getAllSolutionsByLoggedInMember().subscribe(solutions => {
       for (const puzzle of this.puzzles) {
         for (const solution of solutions) {
           if (solution.puzzle.id === puzzle.id) {
