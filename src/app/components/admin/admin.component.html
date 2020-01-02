@@ -10,10 +10,13 @@
         <p><span>Score: </span>{{ member.score }}</p>
         <div class="modification">
           <fa-icon [icon]="faTrash" class="fas" (click)="deleteMember(member.id)"></fa-icon>
-          <fa-icon [icon]="faEdit" class="fas" (click)="toggleEditComponents(i)"></fa-icon>
+          <a [routerLink]="['/admin/edit', member.id]" [state]="member">
+            <fa-icon [icon]="faEdit" class="fas" (click)="toggleEditComponents(i)"></fa-icon>
+          </a>
         </div>
+
         <div *ngIf="toggleEdit === i">
-          <div>Editable data will appear here.</div>
+
         </div>
       </div>
     </div>

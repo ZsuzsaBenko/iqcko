@@ -25,7 +25,8 @@ const routes: Routes = [
   {path: 'puzzles/:id', canActivate: [AuthGuardService], component: PuzzleGameComponent, pathMatch: 'full'},
   {path: 'puzzles/:id/comments', canActivate: [AuthGuardService], component: CommentComponent},
   {path: 'profile', canActivate: [AuthGuardService], component: ProfileComponent},
-  {path: 'admin', canActivate: [AdminAuthGuardService], component: AdminComponent},
+  {path: 'admin', canActivate: [AdminAuthGuardService], component: AdminComponent, pathMatch: 'full'},
+  {path: 'admin/edit/:id', canActivate: [AdminAuthGuardService], component: ProfileComponent},
   {path: '**', redirectTo: 'home'}
 ];
 

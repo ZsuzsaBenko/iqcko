@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
+import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { MemberService } from '../../../services/member.service';
 import { Member } from '../../../models/Member';
-import { ErrorHandlerService } from '../../../services/error-handler.service';
 
 @Component({
   selector: 'app-my-data',
@@ -21,19 +22,25 @@ export class MyDataComponent implements OnInit {
   failedToModifyData = false;
 
   constructor(private memberService: MemberService,
-              private errorHandlerService: ErrorHandlerService) {
+              private errorHandlerService: ErrorHandlerService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.memberService.getLoggedInMemberProfile().subscribe(member => {
-      this.member = member;
+    if (this.activatedRoute.snapshot.url.toString().startsWith('admin')) {
+      this.member = window.history.state;
       this.isFetching = false;
-    },
-    error => {
-      this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-      this.isFetching = false;
-      this.showError = true;
-    });
+    } else {
+      this.memberService.getLoggedInMemberProfile().subscribe(member => {
+        this.member = member;
+        this.isFetching = false;
+      },
+      error => {
+        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
+        this.isFetching = false;
+        this.showError = true;
+      });
+    }
   }
 
 

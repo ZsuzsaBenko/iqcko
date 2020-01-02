@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { Solution } from '../../../models/Solution';
 import { SolutionService } from '../../../services/solution.service';
 import { PuzzleService } from '../../../services/puzzle.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { Solution } from '../../../models/Solution';
 
 import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
 import { faSquareRootAlt } from '@fortawesome/free-solid-svg-icons/faSquareRootAlt';
@@ -28,16 +29,26 @@ export class MySolutionsComponent implements OnInit {
 
   constructor(private solutionService: SolutionService,
               private puzzleService: PuzzleService,
-              private errorHandlerService: ErrorHandlerService) {
+              private errorHandlerService: ErrorHandlerService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.solutionService.getAllSolutionsByLoggedInMember().subscribe(solutions => {
-      this.solutions = solutions;
-    },
-    error => {
-      this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-    });
+    if (this.activatedRoute.snapshot.url.toString().startsWith('admin')) {
+      this.solutionService.getAllSolutionsByMember(this.activatedRoute.snapshot.params.id).subscribe(solutions => {
+        this.solutions = solutions;
+      },
+      error => {
+        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
+      });
+    } else {
+      this.solutionService.getAllSolutionsByLoggedInMember().subscribe(solutions => {
+        this.solutions = solutions;
+      },
+      error => {
+        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
+      });
+    }
   }
 
   countSpeed(seconds: number) {
