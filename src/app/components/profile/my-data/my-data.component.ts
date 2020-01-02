@@ -43,7 +43,6 @@ export class MyDataComponent implements OnInit {
     }
   }
 
-
   toggleFormVisible() {
     this.isFormVisible = !this.isFormVisible;
   }
@@ -72,6 +71,26 @@ export class MyDataComponent implements OnInit {
   }
 
   updateMember(form: NgForm, member: Member) {
+    if (this.activatedRoute.snapshot.url.toString().startsWith('admin')) {
+      this.updateMemberAsAdmin(form, member);
+    } else {
+        this.updateLoggedInMember(form, member);
+    }
+  }
+
+  private updateMemberAsAdmin(form: NgForm, member: Member) {
+    this.memberService.updateMember(this.member.id, member).subscribe( (updatedMember) => {
+        form.reset();
+        this.invalidPassword = false;
+        this.isFormVisible = false;
+        this.member = updatedMember;
+      },
+      error => {
+        this.onError(error, form);
+      });
+  }
+
+  private updateLoggedInMember(form: NgForm, member: Member) {
     this.memberService.updateLoggedInMemberProfile(member).subscribe(() => {
         form.reset();
         this.invalidPassword = false;
@@ -79,7 +98,7 @@ export class MyDataComponent implements OnInit {
         this.memberService.getLoggedInMemberProfile().subscribe(updatedMember => {
             this.member = updatedMember;
           },
-          error =>  {
+          error => {
             this.onError(error, form);
           });
       },
@@ -88,7 +107,7 @@ export class MyDataComponent implements OnInit {
       });
   }
 
-  onError(error: HttpErrorResponse, form: NgForm) {
+  private onError(error: HttpErrorResponse, form: NgForm) {
     this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
     form.reset();
     this.failedToModifyData = true;
