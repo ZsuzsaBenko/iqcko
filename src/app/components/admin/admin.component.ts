@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   members: Member[];
   errorMessage = null;
   showError = false;
+  toggleEdit = -1;
   faTrash = faTrash;
   faEdit = faEdit;
 
@@ -29,6 +30,18 @@ export class AdminComponent implements OnInit {
     error => {
         this.onError(error);
       });
+  }
+
+  deleteMember(id: number) {
+    if (!confirm('Biztosan törölni akarod ezt a felhasználót?')) {
+      return;
+    }
+    this.adminService.deleteMember(id).subscribe(() => console.log(`Member with id ${id} deleted.`),
+      (error => this.onError(error)));
+  }
+
+  toggleEditComponents(index: number) {
+    this.toggleEdit = this.toggleEdit === -1 ? index : -1;
   }
 
   private onError(error: HttpErrorResponse) {
