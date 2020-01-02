@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+
 import { ErrorHandlerService } from '../../services/error-handler.service';
+import { MemberService } from '../../services/member.service';
 import { Member } from '../../models/Member';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import {MemberService} from '../../services/member.service';
 
 @Component({
   selector: 'app-admin',
@@ -16,7 +17,6 @@ export class AdminComponent implements OnInit {
   members: Member[];
   errorMessage = null;
   showError = false;
-  toggleEdit = -1;
   faTrash = faTrash;
   faEdit = faEdit;
 
@@ -38,10 +38,6 @@ export class AdminComponent implements OnInit {
     }
     this.memberService.deleteMember(id).subscribe(() => console.log(`Member with id ${id} deleted.`),
       (error => this.onError(error)));
-  }
-
-  toggleEditComponents(index: number) {
-    this.toggleEdit = this.toggleEdit === -1 ? index : -1;
   }
 
   private onError(error: HttpErrorResponse) {

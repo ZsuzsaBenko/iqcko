@@ -1,22 +1,18 @@
 <app-navbar></app-navbar>
 <div class="container-fluid admin-container">
   <div class="row">
-    <div *ngIf="!showError" class="col-8 offset-2 members-container">
+    <div *ngIf="!showError" class="col-12 col-sm-8 offset-sm-2 members-container">
       <h1>Felhasználók</h1>
-      <div *ngFor="let member of members, let i = index" class="memberDiv">
+      <div *ngFor="let member of members" class="memberDiv">
         <h3>{{ member.username }}</h3>
         <p><span>Email: </span>{{ member.email }}</p>
-        <p><span>Registered: </span> {{ member.registration | date: 'yyyy. MM. dd.' }}</p>
-        <p><span>Score: </span>{{ member.score }}</p>
+        <p><span>Regisztráció: </span> {{ member.registration | date: 'yyyy. MM. dd.' }}</p>
+        <p><span>Pontszám: </span>{{ member.score }}</p>
         <div class="modification">
           <fa-icon [icon]="faTrash" class="fas" (click)="deleteMember(member.id)"></fa-icon>
           <a [routerLink]="['/admin/edit', member.id]" [state]="member">
-            <fa-icon [icon]="faEdit" class="fas" (click)="toggleEditComponents(i)"></fa-icon>
+            <fa-icon [icon]="faEdit" class="fas"></fa-icon>
           </a>
-        </div>
-
-        <div *ngIf="toggleEdit === i">
-
         </div>
       </div>
     </div>
