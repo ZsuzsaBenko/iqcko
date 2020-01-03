@@ -45,4 +45,13 @@ export class CommentService {
     const url = this.baseUrl + 'delete/' + commentId;
     return this.http.delete(url);
   }
+
+  editComment(commentId: number, editedComment: PuzzleComment): Observable<PuzzleComment> {
+    if (!AuthService.isAdmin()) {
+      return null;
+    }
+
+    const url = this.baseUrl + 'update/' + commentId;
+    return this.http.put<PuzzleComment>(url, editedComment);
+  }
 }

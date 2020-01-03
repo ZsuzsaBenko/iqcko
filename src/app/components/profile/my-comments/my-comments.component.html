@@ -5,15 +5,30 @@
     <button type="button" *ngIf="!isVisible" (click)="toggleVisible()">Megnézem</button>
     <button type="button" *ngIf="isVisible" (click)="toggleVisible()">Becsukom</button>
     <ul *ngIf="isVisible">
-      <li *ngFor="let comment of comments">
-        <a routerLink="/puzzles/{{ comment.puzzle.id }}/comments">
-          <div class="comment-div">
+      <li *ngFor="let comment of comments, let i = index">
+        <div class="comment-div">
+          <a routerLink="/puzzles/{{ comment.puzzle.id }}/comments">
             <h3>Rejtvény: <span>{{ comment.puzzle.title}}</span></h3>
-            <p>Legutolsó hozzászólás: <span>{{ comment.message }}</span></p>
-            <p>Dátum: <span>{{ comment.submissionTime | date: 'yyyy. MM. dd.'}}</span></p>
+          </a>
+          <p *ngIf="!isAdmin">Legutolsó hozzászólás: <span>{{ comment.message }}</span></p>
+          <p *ngIf="isAdmin">Hozzászólás:
+            <span (keydown.enter)="editComment(comment.id)"
+                  [contentEditable]="i === isEditable"
+                  [ngClass]="{'inEditMode': i === isEditable}"
+                  id="messageText{{comment.id}}">
+            {{ comment.message }}
+            </span>
+          </p>
+          <p>Dátum: <span>{{ comment.submissionTime | date: 'yyyy. MM. dd.'}}</span></p>
+          <div *ngIf="isAdmin" class="modification">
+            <fa-icon [icon]="faTrash" class="fas" (click)="deleteComment(comment.id)"></fa-icon>
+            <fa-icon [icon]="faEdit" class="fas" (click)="toggleEditable(i)"></fa-icon>
           </div>
-        </a>
+        </div>
       </li>
     </ul>
+  </div>
+  <div *ngIf="errorMessage !== ''" class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 my-comments">
+    {{ errorMessage }}
   </div>
 </div>
