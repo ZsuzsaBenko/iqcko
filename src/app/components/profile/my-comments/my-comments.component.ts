@@ -43,4 +43,9 @@ export class MyCommentsComponent implements OnInit {
   toggleVisible() {
     this.isVisible = !this.isVisible;
   }
+
+  refreshComments(deletedComment: PuzzleComment) {
+    const index = this.comments.indexOf(deletedComment);
+    this.comments.splice(index, 1);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 import { CommentService } from '../../../services/comment.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
@@ -9,6 +9,7 @@ import { PuzzleComment } from '../../../models/PuzzleComment';
   template: ''
 })
 export class CommentItemBaseComponent implements OnInit {
+  @Output() commentDeleted = new EventEmitter<PuzzleComment>();
   comment: PuzzleComment;
   isEditable = false;
   errorMessage = null;
@@ -26,7 +27,7 @@ export class CommentItemBaseComponent implements OnInit {
     }
 
     this.commentService.deleteComment(id).subscribe( () => {
-        console.log(`Comment with id ${id} deleted.`);
+        this.commentDeleted.emit(this.comment);
       },
       error => {
         this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
@@ -40,9 +41,7 @@ export class CommentItemBaseComponent implements OnInit {
   editComment(id: number) {
     this.isEditable = false;
     const message = document.querySelector(`.messageText${id}`).textContent;
-
     this.comment.message = message.trim();
-
     this.sendUpdate(id, this.comment);
   }
 
