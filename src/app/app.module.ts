@@ -31,6 +31,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { CommentItemBaseComponent } from './components/comment/comment-item/comment-item-base.component';
 import { SimpleCommentItemComponent } from './components/comment/comment-item/simple-comment-item/simple-comment-item.component';
 import { ProfileCommentItemComponent } from './components/comment/comment-item/profile-comment-item/profile-comment-item.component';
+import { AddCommentComponent } from './components/comment/add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ProfileCommentItemComponent } from './components/comment/comment-item/p
     AdminComponent,
     CommentItemBaseComponent,
     SimpleCommentItemComponent,
-    ProfileCommentItemComponent
+    ProfileCommentItemComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,

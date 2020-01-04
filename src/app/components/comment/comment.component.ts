@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { CommentService } from '../../services/comment.service';
 import { ErrorHandlerService } from '../../services/error-handler.service';
 import { PuzzleComment } from '../../models/PuzzleComment';
-import { Puzzle } from '../../models/Puzzle';
 
 @Component({
   selector: 'app-comment',
@@ -18,7 +16,6 @@ export class CommentComponent implements OnInit {
   isFetching = true;
   errorMessage = '';
   showError = false;
-  failedToAddComment = false;
 
   constructor(private commentService: CommentService,
               private errorHandlerService: ErrorHandlerService,
@@ -43,27 +40,4 @@ export class CommentComponent implements OnInit {
     });
   }
 
-  onSubmit(form: NgForm) {
-    const agreement = form.value.agreement;
-    if (!agreement) {
-      return;
-    }
-
-    const message = form.value.message;
-    const puzzle = new Puzzle();
-    puzzle.id = this.puzzleId;
-
-    const newPuzzleComment = new PuzzleComment();
-    newPuzzleComment.message = message;
-    newPuzzleComment.puzzle = puzzle;
-
-    this.commentService.addNewComment(newPuzzleComment).subscribe( response => {
-      form.reset();
-      this.comments.push(response);
-    },
-      error => {
-      this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-      this.failedToAddComment = true;
-    });
-  }
 }
