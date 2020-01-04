@@ -37,6 +37,11 @@ export class CommentService {
     return this.http.post<PuzzleComment>(url, newComment);
   }
 
+  editComment(commentId: number, editedComment: PuzzleComment): Observable<PuzzleComment> {
+    const url = this.baseUrl + 'update/' + commentId;
+    return this.http.put<PuzzleComment>(url, editedComment);
+  }
+
   deleteComment(commentId: number): Observable<any> {
     if (!AuthService.isAdmin()) {
       return null;
@@ -44,14 +49,5 @@ export class CommentService {
 
     const url = this.baseUrl + 'delete/' + commentId;
     return this.http.delete(url);
-  }
-
-  editComment(commentId: number, editedComment: PuzzleComment): Observable<PuzzleComment> {
-    if (!AuthService.isAdmin()) {
-      return null;
-    }
-
-    const url = this.baseUrl + 'update/' + commentId;
-    return this.http.put<PuzzleComment>(url, editedComment);
   }
 }

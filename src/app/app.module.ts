@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RatingModule } from 'ng-starrating';
 import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { environment } from '../environments/environment';
 
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 
@@ -28,6 +28,9 @@ import { CommentComponent } from './components/comment/comment.component';
 import { AddPuzzleComponent } from './components/add-puzzle/add-puzzle.component';
 import { RegLoginComponent } from './components/welcome/reg-login/reg-login.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { CommentItemBaseComponent } from './components/comment/comment-item/comment-item-base.component';
+import { SimpleCommentItemComponent } from './components/comment/comment-item/simple-comment-item/simple-comment-item.component';
+import { ProfileCommentItemComponent } from './components/comment/comment-item/profile-comment-item/profile-comment-item.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { AdminComponent } from './components/admin/admin.component';
     CommentComponent,
     AddPuzzleComponent,
     RegLoginComponent,
-    AdminComponent
+    AdminComponent,
+    CommentItemBaseComponent,
+    SimpleCommentItemComponent,
+    ProfileCommentItemComponent
   ],
   imports: [
     BrowserModule,

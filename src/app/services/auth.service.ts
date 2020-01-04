@@ -13,9 +13,18 @@ export class AuthService {
   }
 
   static isAdmin() {
-    const token = localStorage.getItem('token');
-    const data = atob(token.substring(token.indexOf('.') + 1, token.lastIndexOf('.')));
+    const data = this.getTokenData();
     return data.indexOf('ADMIN') >= 0;
+  }
+
+  static getLoggedInMemberEmail(): string {
+    const data = this.getTokenData();
+    return data.substring(8, data.indexOf(',') - 1);
+  }
+
+  static getTokenData(): string {
+    const token = localStorage.getItem('token');
+    return atob(token.substring(token.indexOf('.') + 1, token.lastIndexOf('.')));
   }
 
   login(data: {email: string, password: string}): Observable<any> {

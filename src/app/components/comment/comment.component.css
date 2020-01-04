@@ -41,24 +41,6 @@ li {
   list-style-type: none;
 }
 
-.comment {
-  width: 80%;
-  margin: 10px auto;
-  background-color: #444444;
-  border: 2px solid #00b300;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 17px;
-}
-
-p:last-child {
-  color: #f0fff0;
-}
-
-p span:last-child {
-  float: right;
-}
-
 textarea, label, button {
   display: block;
 }

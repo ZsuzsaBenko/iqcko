@@ -12,13 +12,7 @@
       <h2> {{ comments[0].puzzle.title }}</h2>
       <ul>
         <li *ngFor="let comment of comments">
-          <div class="comment">
-            <p>
-              <span>{{ comment.member.username }}</span>
-              <span>{{ comment.submissionTime | date: 'yyyy. MM. dd.' }}</span>
-            </p>
-            <p>{{ comment.message }}</p>
-          </div>
+          <app-simple-comment-item [comment]="comment"></app-simple-comment-item>
         </li>
       </ul>
     </div>
