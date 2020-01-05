@@ -52,8 +52,9 @@
   padding-bottom: 20px;
 }
 
-#date {
+.date {
   float: right;
+  font-size: 16px;
 }
 
 .puzzle-info, #no-rating {

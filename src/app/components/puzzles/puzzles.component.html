@@ -29,11 +29,12 @@
             <li *ngFor="let puzzle of puzzles">
               <div class="puzzle">
                 <p *ngIf="puzzle.member !== null" class="puzzle-info">Beküldő: <span>{{ puzzle.member.username }}</span>
-                  <span id="date"> {{ puzzle.submissionTime | date:'yyyy. MM. dd.' }}</span>
+                  <span class="date"> {{ puzzle.submissionTime | date:'yyyy. MM. dd.' }}</span>
                 </p>
                 <h3>
                   <span *ngIf="puzzle.solved" class="solved"> <fa-icon [icon]="faCheck" class="fas fa-check"></fa-icon>
                   </span>{{ puzzle.title }}
+                  <span *ngIf="puzzle.member === null" class="date"> {{ puzzle.submissionTime | date:'yyyy. MM. dd.' }}</span>
                 </h3>
                 <p class="puzzle-info">Kategória:
                   <span>{{ puzzleService.translateCategory(puzzle.category) | uppercase }}</span>
