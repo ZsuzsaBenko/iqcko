@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="container-fluid admin-container">
+  <div class="row">
+    <div *ngIf="!showError" class="col-12 col-sm-8 offset-sm-2 puzzles-container">
+      <h1>Rejtvények</h1>
+      <div *ngFor="let puzzle of puzzles" class="puzzleDiv">
+        <div class="category-pic">
+          <fa-icon [icon]="faQuestion" class="fas" *ngIf="puzzle.category.toString() === 'RIDDLE'"></fa-icon>
+          <fa-icon [icon]="faSquareRootAlt" class="fas" *ngIf="puzzle.category.toString() === 'MATH_PUZZLE'"></fa-icon>
+          <fa-icon [icon]="faDice" class="fas" *ngIf="puzzle.category.toString() === 'PICTURE_PUZZLE'"></fa-icon>
+          <fa-icon [icon]="faFont" class="fas" *ngIf="puzzle.category.toString() === 'WORD_PUZZLE'"></fa-icon>
+          <fa-icon [icon]="faPenFancy" class="fas" *ngIf="puzzle.category.toString() === 'CIPHER'"></fa-icon>
+        </div>
+        <h3>{{ puzzle.title }}</h3>
+        <p *ngIf="puzzle.member !== null"><span>Beküldő: </span>{{ puzzle.member.username }}</p>
+        <p *ngIf="puzzle.member === null"><span>Beküldő: </span>törölt felhasználó</p>
+        <p><span>Dátum: </span>{{ puzzle.submissionTime | date: 'yyyy. MM. dd.' }}</p>
+        <p><span>Kategória: </span> {{ puzzleService.translateCategory(puzzle.category) }}</p>
+        <p><span>Nehézség: </span>{{ puzzleService.translateLevel(puzzle.level) }}</p>
+        <div class="modification">
+          <fa-icon [icon]="faTrash" class="fas" (click)="deletePuzzle(puzzle.id)"></fa-icon>
+          <a [routerLink]="['/admin/puzzles/edit', puzzle.id]">
+            <fa-icon [icon]="faEdit" class="fas"></fa-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showError" class="col-6">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

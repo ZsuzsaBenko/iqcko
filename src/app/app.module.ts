@@ -27,11 +27,12 @@ import { MyCommentsComponent } from './components/profile/my-comments/my-comment
 import { CommentComponent } from './components/comment/comment.component';
 import { AddPuzzleComponent } from './components/add-puzzle/add-puzzle.component';
 import { RegLoginComponent } from './components/welcome/reg-login/reg-login.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminMembersComponent } from './components/admin/admin-members/admin-members.component';
 import { CommentItemBaseComponent } from './components/comment/comment-item/comment-item-base.component';
 import { SimpleCommentItemComponent } from './components/comment/comment-item/simple-comment-item/simple-comment-item.component';
 import { ProfileCommentItemComponent } from './components/comment/comment-item/profile-comment-item/profile-comment-item.component';
 import { AddCommentComponent } from './components/comment/add-comment/add-comment.component';
+import { AdminPuzzlesComponent } from './components/admin/admin-puzzles/admin-puzzles.component';
 
 @NgModule({
   declarations: [
@@ -51,11 +52,12 @@ import { AddCommentComponent } from './components/comment/add-comment/add-commen
     CommentComponent,
     AddPuzzleComponent,
     RegLoginComponent,
-    AdminComponent,
+    AdminMembersComponent,
     CommentItemBaseComponent,
     SimpleCommentItemComponent,
     ProfileCommentItemComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    AdminPuzzlesComponent
   ],
   imports: [
     BrowserModule,

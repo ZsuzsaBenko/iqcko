@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { ErrorHandlerService } from '../../services/error-handler.service';
-import { MemberService } from '../../services/member.service';
-import { Member } from '../../models/Member';
+import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { MemberService } from '../../../services/member.service';
+import { Member } from '../../../models/Member';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-admin-members',
+  templateUrl: './admin-members.component.html',
+  styleUrls: ['./admin-members.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminMembersComponent implements OnInit {
   members: Member[];
   errorMessage = null;
   showError = false;

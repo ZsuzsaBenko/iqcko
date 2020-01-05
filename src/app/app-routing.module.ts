@@ -10,7 +10,8 @@ import { PuzzleGameComponent } from './components/puzzle-game/puzzle-game.compon
 import { ProfileComponent } from './components/profile/profile.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { AddPuzzleComponent } from './components/add-puzzle/add-puzzle.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminMembersComponent } from './components/admin/admin-members/admin-members.component';
+import { AdminPuzzlesComponent } from './components/admin/admin-puzzles/admin-puzzles.component';
 
 const routes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -25,8 +26,10 @@ const routes: Routes = [
   {path: 'puzzles/:id', canActivate: [AuthGuardService], component: PuzzleGameComponent, pathMatch: 'full'},
   {path: 'puzzles/:id/comments', canActivate: [AuthGuardService], component: CommentComponent},
   {path: 'profile', canActivate: [AuthGuardService], component: ProfileComponent},
-  {path: 'admin', canActivate: [AdminAuthGuardService], component: AdminComponent, pathMatch: 'full'},
-  {path: 'admin/edit/:id', canActivate: [AdminAuthGuardService], component: ProfileComponent},
+  {path: 'admin/puzzles', canActivate: [AdminAuthGuardService], component: AdminPuzzlesComponent},
+  {path: 'admin/members', canActivate: [AdminAuthGuardService], component: AdminMembersComponent},
+  {path: 'admin/puzzles/edit/:id', canActivate: [AdminAuthGuardService], component: ProfileComponent},
+  {path: 'admin/members/edit/:id', canActivate: [AdminAuthGuardService], component: ProfileComponent},
   {path: '**', redirectTo: 'home'}
 ];
 

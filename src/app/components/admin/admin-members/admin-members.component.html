@@ -10,7 +10,7 @@
         <p><span>Pontszám: </span>{{ member.score }}</p>
         <div class="modification">
           <fa-icon [icon]="faTrash" class="fas" (click)="deleteMember(member.id)"></fa-icon>
-          <a [routerLink]="['/admin/edit', member.id]" [state]="member">
+          <a [routerLink]="['/admin/members/edit', member.id]" [state]="member">
             <fa-icon [icon]="faEdit" class="fas"></fa-icon>
           </a>
         </div>
