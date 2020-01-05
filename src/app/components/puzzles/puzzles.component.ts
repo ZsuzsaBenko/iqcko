@@ -2,15 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
+import { ErrorHandlerService } from '../../services/error-handler.service';
+import { SolutionService } from '../../services/solution.service';
 import { PuzzleService } from '../../services/puzzle.service';
 import { Puzzle } from '../../models/Puzzle';
 import { Category } from '../../models/Category';
-import { NgForm } from '@angular/forms';
-import { ErrorHandlerService } from '../../services/error-handler.service';
-import { SolutionService } from '../../services/solution.service';
-import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
-import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons/faStarHalfAlt';
-import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { Solution } from '../../models/Solution';
+
 
 @Component({
   selector: 'app-puzzles',
@@ -24,9 +22,6 @@ export class PuzzlesComponent implements OnInit {
   isFetching = true;
   errorMessage = '';
   showError = false;
-  faStar = faStar;
-  faStarHalfAlt = faStarHalfAlt;
-  faCheck = faCheck;
 
   constructor(private puzzleService: PuzzleService,
               private solutionService: SolutionService,
@@ -83,36 +78,32 @@ export class PuzzlesComponent implements OnInit {
     }
   }
 
-  markSolvedPuzzles() {
+  onSort(sortedPuzzles: Puzzle[]) {
+    this.puzzles = sortedPuzzles;
+    this.markSolvedPuzzles();
+  }
+
+  private markSolvedPuzzles() {
     this.solutionService.getAllSolutionsByLoggedInMember().subscribe(solutions => {
-      for (const puzzle of this.puzzles) {
-        for (const solution of solutions) {
-          if (solution.puzzle.id === puzzle.id) {
-            puzzle.solved = true;
-            break;
-          }
-        }
-      }
+      this.findSolved(solutions);
     },
       error => {
       this.onError(error);
       });
   }
 
-  onSubmit(form: NgForm) {
-    const sortingParam = form.value.sort;
-    if (sortingParam !== '') {
-      this.puzzleService.getSortedPuzzles(this.category, sortingParam).subscribe( puzzles => {
-        this.puzzles = puzzles;
-        this.markSolvedPuzzles();
-      },
-        error => {
-          this.onError(error);
-        });
+  private findSolved(solutions: Solution[]) {
+    for (const puzzle of this.puzzles) {
+      for (const solution of solutions) {
+        if (solution.puzzle.id === puzzle.id) {
+          puzzle.solved = true;
+          break;
+        }
+      }
     }
   }
 
-  onSuccess(puzzles: Puzzle[], category: Category, title: string) {
+  private onSuccess(puzzles: Puzzle[], category: Category, title: string) {
     this.puzzles = puzzles;
     this.category = category;
     this.title = title;
@@ -120,7 +111,7 @@ export class PuzzlesComponent implements OnInit {
     this.markSolvedPuzzles();
   }
 
-  onError(error: HttpErrorResponse) {
+  private onError(error: HttpErrorResponse) {
     this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
     this.showError = true;
     this.isFetching = false;

@@ -7,9 +7,6 @@ import { ErrorHandlerService } from '../../../services/error-handler.service';
 
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight';
-import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
-import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons/faStarHalfAlt';
-
 
 @Component({
   selector: 'app-random-puzzles',
@@ -26,8 +23,6 @@ export class RandomPuzzlesComponent implements OnInit {
   showError = false;
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
-  faStar = faStar;
-  faStarHalfAlt = faStarHalfAlt;
 
   constructor(private puzzleService: PuzzleService,
               private errorHandlerService: ErrorHandlerService) {

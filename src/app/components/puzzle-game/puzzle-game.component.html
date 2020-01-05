@@ -23,17 +23,7 @@
                  *ngIf="puzzle.category.toString() === 'PICTURE_PUZZLE'">
           </div>
           <p class="rating">
-            <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="puzzle.rating > 0 && puzzle.rating < 1"></fa-icon>
-            <fa-icon [icon]="faStar" class="fas" *ngIf="puzzle.rating >= 1"></fa-icon>
-            <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="puzzle.rating > 1 && puzzle.rating < 2"></fa-icon>
-            <fa-icon [icon]="faStar" class="fas" *ngIf="puzzle.rating >= 2"></fa-icon>
-            <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="puzzle.rating > 2 && puzzle.rating < 3"></fa-icon>
-            <fa-icon [icon]="faStar" class="fas" *ngIf="puzzle.rating >= 3"></fa-icon>
-            <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="puzzle.rating > 3 && puzzle.rating < 4"></fa-icon>
-            <fa-icon [icon]="faStar" class="fas" *ngIf="puzzle.rating >= 4"></fa-icon>
-            <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="puzzle.rating > 4 && puzzle.rating < 5"></fa-icon>
-            <fa-icon [icon]="faStar" class="fas" *ngIf="puzzle.rating === 5"></fa-icon>
-            <span id="no-rating" *ngIf="puzzle.rating === 0">Még nincs értékelés.</span>
+            <app-stars [puzzle]="puzzle"></app-stars>
           </p>
           <div class="answer-form" *ngIf="!isSolved">
             <form (ngSubmit)="onCheckAnswer(f)" #f="ngForm">

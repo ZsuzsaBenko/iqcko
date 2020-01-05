@@ -33,6 +33,9 @@ import { SimpleCommentItemComponent } from './components/comment/comment-item/si
 import { ProfileCommentItemComponent } from './components/comment/comment-item/profile-comment-item/profile-comment-item.component';
 import { AddCommentComponent } from './components/comment/add-comment/add-comment.component';
 import { AdminPuzzlesComponent } from './components/admin/admin-puzzles/admin-puzzles.component';
+import { PuzzleItemComponent } from './components/puzzles/puzzle-item/puzzle-item.component';
+import { PuzzleSortComponent } from './components/puzzles/puzzle-sort/puzzle-sort.component';
+import { StarsComponent } from './components/puzzles/stars/stars.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,10 @@ import { AdminPuzzlesComponent } from './components/admin/admin-puzzles/admin-pu
     SimpleCommentItemComponent,
     ProfileCommentItemComponent,
     AddCommentComponent,
-    AdminPuzzlesComponent
+    AdminPuzzlesComponent,
+    PuzzleItemComponent,
+    PuzzleSortComponent,
+    StarsComponent
   ],
   imports: [
     BrowserModule,

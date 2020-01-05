@@ -18,16 +18,7 @@
           <p class="puzzle-info">Nehézség:</p>
           <p>{{ puzzleService.translateLevel(currentPuzzle.level) | uppercase }}</p>
           <p class="rating">
-            <fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="currentPuzzle.rating > 0 && currentPuzzle.rating < 1"></fa-icon>
-            <fa-icon [icon]="faStar" *ngIf="currentPuzzle.rating >= 1"></fa-icon>
-            <fa-icon [icon]="faStarHalfAlt" *ngIf="currentPuzzle.rating > 1 && currentPuzzle.rating < 2"></fa-icon>
-            <fa-icon [icon]="faStar" *ngIf="currentPuzzle.rating >= 2"></fa-icon>
-            <fa-icon [icon]="faStarHalfAlt" *ngIf="currentPuzzle.rating > 2 && currentPuzzle.rating < 3"></fa-icon>
-            <fa-icon [icon]="faStar" *ngIf="currentPuzzle.rating >= 3"></fa-icon>
-            <fa-icon [icon]="faStarHalfAlt" *ngIf="currentPuzzle.rating > 3 && currentPuzzle.rating < 4"></fa-icon>
-            <fa-icon [icon]="faStar" *ngIf="currentPuzzle.rating >= 4"></fa-icon>
-            <fa-icon [icon]="faStarHalfAlt" *ngIf="currentPuzzle.rating > 4 && currentPuzzle.rating < 5"></fa-icon>
-            <fa-icon [icon]="faStar" *ngIf="currentPuzzle.rating === 5"></fa-icon>
+            <app-stars [puzzle]="currentPuzzle"></app-stars>
           </p>
           <button type="button" routerLink="/puzzles/{{ currentPuzzle.id }}">Megoldom!</button>
         </div>

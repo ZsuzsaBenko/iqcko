@@ -5,8 +5,6 @@ import { PuzzleService } from '../../../services/puzzle.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { Puzzle } from '../../../models/Puzzle';
 
-import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
-import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons/faStarHalfAlt';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
 import { faSquareRootAlt } from '@fortawesome/free-solid-svg-icons/faSquareRootAlt';
 import { faDice } from '@fortawesome/free-solid-svg-icons/faDice';
@@ -22,8 +20,6 @@ export class MyPuzzlesComponent implements OnInit {
   isVisible = false;
   puzzles: Puzzle[];
   errorMessage = '';
-  faStar = faStar;
-  faStarHalfAlt = faStarHalfAlt;
   faQuestion = faQuestion;
   faSquareRootAlt = faSquareRootAlt;
   faDice = faDice;

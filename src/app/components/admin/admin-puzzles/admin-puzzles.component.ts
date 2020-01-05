@@ -4,14 +4,6 @@ import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { PuzzleService } from '../../../services/puzzle.service';
 import { Puzzle } from '../../../models/Puzzle';
 
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
-import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
-import { faSquareRootAlt } from '@fortawesome/free-solid-svg-icons/faSquareRootAlt';
-import { faDice } from '@fortawesome/free-solid-svg-icons/faDice';
-import { faFont } from '@fortawesome/free-solid-svg-icons/faFont';
-import { faPenFancy } from '@fortawesome/free-solid-svg-icons/faPenFancy';
-
 @Component({
   selector: 'app-admin-puzzles',
   templateUrl: './admin-puzzles.component.html',
@@ -21,13 +13,6 @@ export class AdminPuzzlesComponent implements OnInit {
   puzzles: Puzzle[];
   errorMessage = null;
   showError = false;
-  faTrash = faTrash;
-  faEdit = faEdit;
-  faQuestion = faQuestion;
-  faSquareRootAlt = faSquareRootAlt;
-  faDice = faDice;
-  faFont = faFont;
-  faPenFancy = faPenFancy;
 
   constructor(private puzzleService: PuzzleService,
               private errorHandlerService: ErrorHandlerService) { }
@@ -42,18 +27,11 @@ export class AdminPuzzlesComponent implements OnInit {
     });
   }
 
-  deletePuzzle(puzzleId: number) {
-    if (!confirm('Biztosan törölni akarod ezt a rejtvényt?')) {
-      return;
-    }
-
-    this.puzzleService.deletePuzzle(puzzleId).subscribe( () => {
-      this.puzzles = this.puzzles.filter(puzzle => puzzle.id !== puzzleId);
-    },
-    error => {
-      this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-      this.showError = true;
-    });
+  refreshPuzzles(deletedPuzzle: Puzzle) {
+    this.puzzles = this.puzzles.filter(puzzle => puzzle !== deletedPuzzle);
   }
 
+  onSort(sortedPuzzles: Puzzle[]) {
+    this.puzzles = sortedPuzzles;
+  }
 }

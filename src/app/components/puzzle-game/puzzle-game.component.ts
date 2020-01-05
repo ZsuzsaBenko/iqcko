@@ -2,19 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
-
-import { Puzzle } from '../../models/Puzzle';
-import { PuzzleService } from '../../services/puzzle.service';
-import { Solution } from '../../models/Solution';
 import { StarRatingComponent } from 'ng-starrating';
-import { SolutionService } from '../../services/solution.service';
-import { ErrorHandlerService } from '../../services/error-handler.service';
 
-import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
-import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons/faStarHalfAlt';
+import { ErrorHandlerService } from '../../services/error-handler.service';
+import { SolutionService } from '../../services/solution.service';
+import { PuzzleService } from '../../services/puzzle.service';
+import { Puzzle } from '../../models/Puzzle';
+import { Solution } from '../../models/Solution';
 
 @Component({
-  selector: 'app-puzzle-item',
+  selector: 'app-puzzle-game',
   templateUrl: './puzzle-game.component.html',
   styleUrls: ['./puzzle-game.component.css']
 })
@@ -28,8 +25,6 @@ export class PuzzleGameComponent implements OnInit {
   errorMessage = '';
   showError = false;
   failedToSendSolution = false;
-  faStar = faStar;
-  faStarHalfAlt = faStarHalfAlt;
 
   constructor(private puzzleService: PuzzleService,
               private solutionService: SolutionService,

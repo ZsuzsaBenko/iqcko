@@ -13,72 +13,12 @@
 
 h1 {
   text-align: center;
-  margin: 30px auto;
+  margin: 30px auto 50px;
   color: #00b300;
-}
-
-.puzzleDiv {
-  border-radius: 10px;
-  background-color: #444444;
-  border: 2px solid #00b300;
-  padding: 15px;
-  margin: 20px;
-  color: #f0fff0;
-  position: relative;
 }
 
 .puzzleDiv:first-child {
   margin-top: 50px;
-}
-
-.puzzleDiv h3 {
-  margin-left: 60px;
-  padding-top: 15px;
-  padding-bottom: 20px;
-  color: #f0fff0;
-}
-
-.puzzleDiv span {
-  font-weight: bold;
-  color: #00b300;
-}
-
-.puzzleDiv .modification {
-  display: flex;
-  width: 120px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  align-items: center;
-  justify-content: center;
-}
-
-.fas {
-  font-size: 30px;
-  color: #00b300;
-  vertical-align: middle;
-  transition: color 1s;
-}
-
-.fas:hover {
-  cursor: pointer;
-  color: #f0fff0;
-}
-
-.modification fa-icon {
-  margin-right: 10px;
-}
-
-.category-pic {
-  position: absolute;
-  left: 15px;
-  top: 15px;
-}
-
-.category-pic .fas {
-  font-size: 40px;
-  color: #00b300;
 }
 
 @media only screen and (max-width: 700px) {
