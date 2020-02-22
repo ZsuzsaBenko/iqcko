@@ -12,9 +12,11 @@ import { CommentComponent } from './components/comment/comment.component';
 import { AddPuzzleComponent } from './components/add-puzzle/add-puzzle.component';
 import { AdminMembersComponent } from './components/admin/admin-members/admin-members.component';
 import { AdminPuzzlesComponent } from './components/admin/admin-puzzles/admin-puzzles.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   {path: '', component: WelcomeComponent},
+  {path: 'error', component: ErrorComponent},
   {path: 'home', canActivate: [AuthGuardService], component: HomeComponent},
   {path: 'puzzles/riddles', canActivate: [AuthGuardService], component: PuzzlesComponent},
   {path: 'puzzles/math-puzzles', canActivate: [AuthGuardService], component: PuzzlesComponent},

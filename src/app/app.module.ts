@@ -36,6 +36,8 @@ import { AdminPuzzlesComponent } from './components/admin/admin-puzzles/admin-pu
 import { PuzzleItemComponent } from './components/puzzles/puzzle-item/puzzle-item.component';
 import { PuzzleSortComponent } from './components/puzzles/puzzle-sort/puzzle-sort.component';
 import { StarsComponent } from './components/puzzles/stars/stars.component';
+import { ErrorInterceptorService } from './services/error-interceptor.service';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { StarsComponent } from './components/puzzles/stars/stars.component';
     AdminPuzzlesComponent,
     PuzzleItemComponent,
     PuzzleSortComponent,
-    StarsComponent
+    StarsComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +82,11 @@ import { StarsComponent } from './components/puzzles/stars/stars.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
       multi: true
     }
   ],
