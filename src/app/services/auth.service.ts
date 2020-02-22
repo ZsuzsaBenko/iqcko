@@ -24,7 +24,7 @@ export class AuthService {
 
   static getTokenData(): string {
     const token = localStorage.getItem('token');
-    return atob(token.substring(token.indexOf('.') + 1, token.lastIndexOf('.')));
+    return token ? atob(token.substring(token.indexOf('.') + 1, token.lastIndexOf('.'))) : '';
   }
 
   login(data: {email: string, password: string}): Observable<any> {
