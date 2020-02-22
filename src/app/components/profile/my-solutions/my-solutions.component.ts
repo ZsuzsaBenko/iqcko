@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SolutionService } from '../../../services/solution.service';
 import { PuzzleService } from '../../../services/puzzle.service';
-import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { Solution } from '../../../models/Solution';
 
 import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
@@ -20,7 +19,6 @@ import { faPenFancy } from '@fortawesome/free-solid-svg-icons/faPenFancy';
 export class MySolutionsComponent implements OnInit {
   solutions: Solution[];
   isVisible = false;
-  errorMessage = '';
   faQuestion = faQuestion;
   faSquareRootAlt = faSquareRootAlt;
   faDice = faDice;
@@ -29,7 +27,6 @@ export class MySolutionsComponent implements OnInit {
 
   constructor(private solutionService: SolutionService,
               private puzzleService: PuzzleService,
-              private errorHandlerService: ErrorHandlerService,
               private activatedRoute: ActivatedRoute) {
   }
 
@@ -37,16 +34,10 @@ export class MySolutionsComponent implements OnInit {
     if (this.activatedRoute.snapshot.url.toString().startsWith('admin')) {
       this.solutionService.getAllSolutionsByMember(this.activatedRoute.snapshot.params.id).subscribe(solutions => {
         this.solutions = solutions;
-      },
-      error => {
-        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
       });
     } else {
       this.solutionService.getAllSolutionsByLoggedInMember().subscribe(solutions => {
         this.solutions = solutions;
-      },
-      error => {
-        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
       });
     }
   }

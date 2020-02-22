@@ -1,7 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { CommentService } from '../../../services/comment.service';
-import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { PuzzleComment } from '../../../models/PuzzleComment';
 
 @Component({
@@ -12,10 +11,8 @@ export class CommentItemBaseComponent implements OnInit {
   @Output() commentDeleted = new EventEmitter<PuzzleComment>();
   comment: PuzzleComment;
   isEditable = false;
-  errorMessage = null;
 
-  constructor(public commentService: CommentService,
-              public errorHandlerService: ErrorHandlerService) {
+  constructor(public commentService: CommentService) {
   }
 
   ngOnInit() {
@@ -26,12 +23,9 @@ export class CommentItemBaseComponent implements OnInit {
       return;
     }
 
-    this.commentService.deleteComment(id).subscribe( () => {
-        this.commentDeleted.emit(this.comment);
-      },
-      error => {
-        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-      });
+    this.commentService.deleteComment(id).subscribe(() => {
+      this.commentDeleted.emit(this.comment);
+    });
   }
 
   toggleEditable() {
@@ -46,13 +40,9 @@ export class CommentItemBaseComponent implements OnInit {
   }
 
   private sendUpdate(id: number, editedComment: PuzzleComment) {
-    this.commentService.editComment(id, editedComment).subscribe( (result) => {
-        editedComment = result;
-      },
-      error => {
-        console.log(error);
-        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-      });
+    this.commentService.editComment(id, editedComment).subscribe((result) => {
+      editedComment = result;
+    });
   }
 
 }

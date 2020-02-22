@@ -1,6 +1,5 @@
 <div class="row">
-  <div *ngIf="errorMessage === ''"
-    class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 my-comments">
+  <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 my-comments">
     <h2>Hozzászólások</h2>
     <button type="button" *ngIf="!isVisible" (click)="toggleVisible()">Megnézem</button>
     <button type="button" *ngIf="isVisible" (click)="toggleVisible()">Becsukom</button>
@@ -9,8 +8,5 @@
         <app-profile-comment-item [comment]="comment" (commentDeleted)="refreshComments($event)"></app-profile-comment-item>
       </li>
     </ul>
-  </div>
-  <div *ngIf="errorMessage !== ''" class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 my-comments">
-    {{ errorMessage }}
   </div>
 </div>

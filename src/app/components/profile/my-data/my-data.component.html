@@ -4,7 +4,7 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-  <div *ngIf="!showError && !isFetching"
+  <div *ngIf="!isFetching"
     class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 my-data">
     <div class="row">
       <div class="d-none d-md-block col-md-4 img-div">
@@ -33,15 +33,9 @@
             <input type="password" id="confirmpass" name="confirmpass" ngModel>
           </div>
           <p *ngIf="invalidPassword" id="confirm">A jelszó és a megerősítése nem egyezik meg.</p>
-          <div *ngIf="failedToModifyData" class="error" id="modify-error">
-            <p>{{ errorMessage }} A módosítás nem sikerült.</p>
-          </div>
           <button type="submit">Küldés</button>
         </form>
       </div>
     </div>
-  </div>
-  <div *ngIf="showError" class="error">
-    <p>{{ errorMessage }}</p>
   </div>
 </div>

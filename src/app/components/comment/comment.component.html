@@ -7,7 +7,7 @@
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="!isFetching && !showError">
+  <div class="row" *ngIf="!isFetching">
     <div *ngIf="comments.length > 0" class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 comment-column">
       <h2> {{ comments[0].puzzle.title }}</h2>
       <ul>
@@ -22,8 +22,5 @@
     <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 add-comment">
       <app-add-comment [puzzleId]="puzzleId" [comments]="comments"></app-add-comment>
     </div>
-  </div>
-  <div *ngIf="showError" class="error">
-    <p>{{ errorMessage }}</p>
   </div>
 </div>

@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { AuthService } from '../../../../services/auth.service';
 import { CommentService } from '../../../../services/comment.service';
-import { ErrorHandlerService } from '../../../../services/error-handler.service';
 import { PuzzleComment } from '../../../../models/PuzzleComment';
 import { CommentItemBaseComponent } from '../comment-item-base.component';
 
@@ -18,9 +17,8 @@ export class SimpleCommentItemComponent extends CommentItemBaseComponent impleme
   isOwnComment: boolean;
   faEdit = faEdit;
 
-  constructor(public commentService: CommentService,
-              public errorHandlerService: ErrorHandlerService) {
-    super(commentService, errorHandlerService);
+  constructor(public commentService: CommentService) {
+    super(commentService);
   }
 
   ngOnInit() {

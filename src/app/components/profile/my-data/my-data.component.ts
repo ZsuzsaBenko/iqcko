@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-
-import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { MemberService } from '../../../services/member.service';
 import { Member } from '../../../models/Member';
 
@@ -17,12 +14,8 @@ export class MyDataComponent implements OnInit {
   isFormVisible = false;
   invalidPassword = false;
   isFetching = true;
-  errorMessage = '';
-  showError = false;
-  failedToModifyData = false;
 
   constructor(private memberService: MemberService,
-              private errorHandlerService: ErrorHandlerService,
               private activatedRoute: ActivatedRoute) {
   }
 
@@ -34,11 +27,6 @@ export class MyDataComponent implements OnInit {
       this.memberService.getLoggedInMemberProfile().subscribe(member => {
         this.member = member;
         this.isFetching = false;
-      },
-      error => {
-        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-        this.isFetching = false;
-        this.showError = true;
       });
     }
   }
@@ -74,42 +62,27 @@ export class MyDataComponent implements OnInit {
     if (this.activatedRoute.snapshot.url.toString().startsWith('admin')) {
       this.updateMemberAsAdmin(form, member);
     } else {
-        this.updateLoggedInMember(form, member);
+      this.updateLoggedInMember(form, member);
     }
   }
 
   private updateMemberAsAdmin(form: NgForm, member: Member) {
-    this.memberService.updateMember(this.member.id, member).subscribe( (updatedMember) => {
-        form.reset();
-        this.invalidPassword = false;
-        this.isFormVisible = false;
-        this.member = updatedMember;
-      },
-      error => {
-        this.onError(error, form);
-      });
+    this.memberService.updateMember(this.member.id, member).subscribe((updatedMember) => {
+      form.reset();
+      this.invalidPassword = false;
+      this.isFormVisible = false;
+      this.member = updatedMember;
+    });
   }
 
   private updateLoggedInMember(form: NgForm, member: Member) {
     this.memberService.updateLoggedInMemberProfile(member).subscribe(() => {
-        form.reset();
-        this.invalidPassword = false;
-        this.isFormVisible = false;
-        this.memberService.getLoggedInMemberProfile().subscribe(updatedMember => {
-            this.member = updatedMember;
-          },
-          error => {
-            this.onError(error, form);
-          });
-      },
-      error => {
-        this.onError(error, form);
+      form.reset();
+      this.invalidPassword = false;
+      this.isFormVisible = false;
+      this.memberService.getLoggedInMemberProfile().subscribe(updatedMember => {
+        this.member = updatedMember;
       });
-  }
-
-  private onError(error: HttpErrorResponse, form: NgForm) {
-    this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-    form.reset();
-    this.failedToModifyData = true;
+    });
   }
 }

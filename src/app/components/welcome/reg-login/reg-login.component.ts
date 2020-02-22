@@ -20,7 +20,8 @@ export class RegLoginComponent implements OnInit {
   constructor(private registrationService: RegistrationService,
               private authService: AuthService,
               private errorHandlerService: ErrorHandlerService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
   }
@@ -64,13 +65,13 @@ export class RegLoginComponent implements OnInit {
     }
   }
 
-  login(data: {email: string, password: string}) {
-    this.authService.login(data).subscribe( (response: any) => {
+  login(data: { email: string, password: string }) {
+    this.authService.login(data).subscribe((response: any) => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['/home']).then();
       },
-      error => {
-        this.message = this.errorHandlerService.handleHttpErrorResponse(error);
+      () => {
+        this.message = this.errorHandlerService.errorMessage;
         this.form.reset();
       });
   }
@@ -79,8 +80,8 @@ export class RegLoginComponent implements OnInit {
     this.registrationService.registerNewMember(member).subscribe((response) => {
       this.message = `Kedves ${response.username}! Sikeresen regisztráltál. Jelentkezz be!`;
       this.form.reset();
-    }, error => {
-      this.message = this.errorHandlerService.handleHttpErrorResponse(error);
+    }, () => {
+      this.message = this.errorHandlerService.errorMessage;
       this.form.reset();
     });
   }

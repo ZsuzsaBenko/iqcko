@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { PuzzleService } from '../../../services/puzzle.service';
-import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { Puzzle } from '../../../models/Puzzle';
 
 import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
@@ -19,7 +18,6 @@ import { faPenFancy } from '@fortawesome/free-solid-svg-icons/faPenFancy';
 export class MyPuzzlesComponent implements OnInit {
   isVisible = false;
   puzzles: Puzzle[];
-  errorMessage = '';
   faQuestion = faQuestion;
   faSquareRootAlt = faSquareRootAlt;
   faDice = faDice;
@@ -27,23 +25,17 @@ export class MyPuzzlesComponent implements OnInit {
   faPenFancy = faPenFancy;
 
   constructor(private puzzleService: PuzzleService,
-              private errorHandlerService: ErrorHandlerService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     if (this.activatedRoute.snapshot.url.toString().startsWith('admin')) {
       this.puzzleService.getAllPuzzlesByMember(this.activatedRoute.snapshot.params.id).subscribe(puzzles => {
         this.puzzles = puzzles;
-      },
-      error => {
-        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
       });
     } else {
       this.puzzleService.getAllPuzzlesByLoggedInMember().subscribe(puzzles => {
         this.puzzles = puzzles;
-        },
-      error => {
-        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
       });
     }
   }

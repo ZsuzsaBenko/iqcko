@@ -30,11 +30,6 @@ button {
   font-size: 15px;
 }
 
-#submit-comment-error {
-  margin: 20px auto;
-  width: 70%;
-}
-
 @media only screen and (max-width: 600px) {
   textarea {
     width: 90%;

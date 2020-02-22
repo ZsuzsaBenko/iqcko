@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-
-import { ErrorHandlerService } from '../../services/error-handler.service';
 import { SolutionService } from '../../services/solution.service';
 import { PuzzleService } from '../../services/puzzle.service';
 import { Puzzle } from '../../models/Puzzle';
@@ -20,61 +17,41 @@ export class PuzzlesComponent implements OnInit {
   title = '';
   category = null;
   isFetching = true;
-  errorMessage = '';
-  showError = false;
 
   constructor(private puzzleService: PuzzleService,
               private solutionService: SolutionService,
-              private errorHandlerService: ErrorHandlerService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     const url = this.activatedRoute.snapshot.url.toString();
     if (url.endsWith('all')) {
-      this.puzzleService.getAllPuzzles().subscribe( puzzles => {
+      this.puzzleService.getAllPuzzles().subscribe(puzzles => {
         this.puzzles = puzzles;
         this.title = 'Összes rejtvény';
         this.isFetching = false;
         this.markSolvedPuzzles();
-      },
-        error => {
-        this.onError(error);
-        });
+      });
     } else if (url.endsWith('riddles')) {
-      this.puzzleService.getPuzzlesByCategory(Category.RIDDLE).subscribe( puzzles => {
+      this.puzzleService.getPuzzlesByCategory(Category.RIDDLE).subscribe(puzzles => {
         this.onSuccess(puzzles, Category.RIDDLE, 'Fejtörők, találós kérdések');
-        },
-        error => {
-          this.onError(error);
-        });
+      });
     } else if (url.endsWith('math-puzzles')) {
-      this.puzzleService.getPuzzlesByCategory(Category.MATH_PUZZLE).subscribe( puzzles => {
+      this.puzzleService.getPuzzlesByCategory(Category.MATH_PUZZLE).subscribe(puzzles => {
         this.onSuccess(puzzles, Category.MATH_PUZZLE, 'Matematikai feladványok');
-        },
-        error => {
-          this.onError(error);
-        });
+      });
     } else if (url.endsWith('picture-puzzles')) {
-      this.puzzleService.getPuzzlesByCategory(Category.PICTURE_PUZZLE).subscribe( puzzles => {
+      this.puzzleService.getPuzzlesByCategory(Category.PICTURE_PUZZLE).subscribe(puzzles => {
         this.onSuccess(puzzles, Category.PICTURE_PUZZLE, 'Képrejtvények');
-        },
-        error => {
-          this.onError(error);
-        });
+      });
     } else if (url.endsWith('word-puzzles')) {
-      this.puzzleService.getPuzzlesByCategory(Category.WORD_PUZZLE).subscribe( puzzles => {
+      this.puzzleService.getPuzzlesByCategory(Category.WORD_PUZZLE).subscribe(puzzles => {
         this.onSuccess(puzzles, Category.WORD_PUZZLE, 'Nyelvi játékok');
-        },
-        error => {
-          this.onError(error);
-        });
+      });
     } else if (url.endsWith('ciphers')) {
-      this.puzzleService.getPuzzlesByCategory(Category.CIPHER).subscribe( puzzles => {
+      this.puzzleService.getPuzzlesByCategory(Category.CIPHER).subscribe(puzzles => {
         this.onSuccess(puzzles, Category.CIPHER, 'Titkosírás');
-        },
-        error => {
-          this.onError(error);
-        });
+      });
     }
   }
 
@@ -86,10 +63,7 @@ export class PuzzlesComponent implements OnInit {
   private markSolvedPuzzles() {
     this.solutionService.getAllSolutionsByLoggedInMember().subscribe(solutions => {
       this.findSolved(solutions);
-    },
-      error => {
-      this.onError(error);
-      });
+    });
   }
 
   private findSolved(solutions: Solution[]) {
@@ -111,9 +85,4 @@ export class PuzzlesComponent implements OnInit {
     this.markSolvedPuzzles();
   }
 
-  private onError(error: HttpErrorResponse) {
-    this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-    this.showError = true;
-    this.isFetching = false;
-  }
 }

@@ -5,7 +5,7 @@
         <span class="sr-only">Loading...</span>
       </div>
     </div>
-    <div *ngIf="!showError && !isFetching"
+    <div *ngIf="!isFetching"
       class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 random-puzzles">
       <h1>Ajánló</h1>
       <div>
@@ -25,9 +25,6 @@
         <fa-icon [icon]="faChevronRight" class="fas fa-chevron-right"
                  (click)="stepRight()" [ngClass]="{'disabled-chevron': !isNext}"></fa-icon>
       </div>
-    </div>
-    <div class="error" *ngIf="showError">
-      <p>{{ errorMessage }}</p>
     </div>
   </div>
 </div>

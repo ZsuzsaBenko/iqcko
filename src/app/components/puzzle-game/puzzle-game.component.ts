@@ -3,8 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
 import { StarRatingComponent } from 'ng-starrating';
-
-import { ErrorHandlerService } from '../../services/error-handler.service';
 import { SolutionService } from '../../services/solution.service';
 import { PuzzleService } from '../../services/puzzle.service';
 import { Puzzle } from '../../models/Puzzle';
@@ -22,13 +20,9 @@ export class PuzzleGameComponent implements OnInit {
   isFetching = true;
   isSolved = false;
   isIncorrect = false;
-  errorMessage = '';
-  showError = false;
-  failedToSendSolution = false;
 
   constructor(private puzzleService: PuzzleService,
               private solutionService: SolutionService,
-              private errorHandlerService: ErrorHandlerService,
               private activatedRoute: ActivatedRoute,
               private location: Location) {
   }
@@ -38,11 +32,6 @@ export class PuzzleGameComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params.id;
     this.puzzleService.getPuzzleById(id).subscribe(puzzle => {
       this.puzzle = puzzle;
-      this.isFetching = false;
-    },
-    error => {
-      this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-      this.showError = true;
       this.isFetching = false;
     });
   }
@@ -80,10 +69,6 @@ export class PuzzleGameComponent implements OnInit {
 
     this.solutionService.saveSolution(solution).subscribe(() => {
       this.location.back();
-    },
-    error => {
-      this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-      this.failedToSendSolution = true;
     });
   }
 }

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
 
 import { Puzzle } from '../../../models/Puzzle';
 import { PuzzleService } from '../../../services/puzzle.service';
-import { ErrorHandlerService } from '../../../services/error-handler.service';
 
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight';
@@ -19,25 +17,18 @@ export class RandomPuzzlesComponent implements OnInit {
   isPrevious = false;
   isNext = true;
   isFetching = true;
-  errorMessage = '';
-  showError = false;
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
 
-  constructor(private puzzleService: PuzzleService,
-              private errorHandlerService: ErrorHandlerService) {
+  constructor(private puzzleService: PuzzleService) {
   }
 
   ngOnInit() {
     this.puzzleService.getRandomPuzzles().subscribe(puzzles => {
-        this.puzzles = puzzles;
-        this.currentPuzzle = puzzles[0];
-        this.isFetching = false;
-      },
-      error => {
-        this.onError(error);
-        this.isFetching = false;
-      });
+      this.puzzles = puzzles;
+      this.currentPuzzle = puzzles[0];
+      this.isFetching = false;
+    });
   }
 
   stepRight() {
@@ -68,11 +59,6 @@ export class RandomPuzzlesComponent implements OnInit {
     if (index === 0) {
       this.isPrevious = false;
     }
-  }
-
-  onError(error: HttpErrorResponse) {
-    this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-    this.showError = true;
   }
 
 }

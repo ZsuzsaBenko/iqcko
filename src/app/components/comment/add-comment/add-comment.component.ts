@@ -1,9 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {Puzzle} from '../../../models/Puzzle';
-import {PuzzleComment} from '../../../models/PuzzleComment';
-import {CommentService} from '../../../services/comment.service';
-import {ErrorHandlerService} from '../../../services/error-handler.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Puzzle } from '../../../models/Puzzle';
+import { PuzzleComment } from '../../../models/PuzzleComment';
+import { CommentService } from '../../../services/comment.service';
 
 @Component({
   selector: 'app-add-comment',
@@ -13,11 +12,9 @@ import {ErrorHandlerService} from '../../../services/error-handler.service';
 export class AddCommentComponent implements OnInit {
   @Input() comments: PuzzleComment[];
   @Input() puzzleId: number;
-  errorMessage = '';
-  failedToAddComment = false;
 
-  constructor(private commentService: CommentService,
-              private errorHandlerService: ErrorHandlerService) { }
+  constructor(private commentService: CommentService) {
+  }
 
   ngOnInit() {
   }
@@ -36,14 +33,10 @@ export class AddCommentComponent implements OnInit {
     newPuzzleComment.message = message;
     newPuzzleComment.puzzle = puzzle;
 
-    this.commentService.addNewComment(newPuzzleComment).subscribe( response => {
-        form.reset();
-        this.comments.push(response);
-      },
-      error => {
-        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
-        this.failedToAddComment = true;
-      });
+    this.commentService.addNewComment(newPuzzleComment).subscribe(response => {
+      form.reset();
+      this.comments.push(response);
+    });
   }
 
 }

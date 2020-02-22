@@ -1,15 +1,12 @@
 <app-navbar></app-navbar>
 <div class="container-fluid admin-container">
   <div class="row">
-    <div *ngIf="!showError" class="col-12 col-sm-8 offset-sm-2 puzzles-container">
+    <div class="col-12 col-sm-8 offset-sm-2 puzzles-container">
       <h1>Rejtvények</h1>
       <app-puzzle-sort [category]=null (puzzlesSorted)="onSort($event)"></app-puzzle-sort>
       <div *ngFor="let puzzle of puzzles" class="puzzleDiv">
         <app-puzzle-item [puzzle]="puzzle" (puzzleDeleted)="refreshPuzzles($event)"></app-puzzle-item>
       </div>
-    </div>
-    <div *ngIf="showError" class="col-6 offset-3">
-      {{ errorMessage }}
     </div>
   </div>
 </div>

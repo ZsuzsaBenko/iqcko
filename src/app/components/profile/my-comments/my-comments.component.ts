@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { CommentService } from '../../../services/comment.service';
-import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { PuzzleComment } from '../../../models/PuzzleComment';
 
 @Component({
@@ -14,10 +13,8 @@ export class MyCommentsComponent implements OnInit {
   isAdmin = false;
   isVisible = false;
   comments: PuzzleComment[];
-  errorMessage = '';
 
   constructor(private commentService: CommentService,
-              private errorHandlerService: ErrorHandlerService,
               private activatedRoute: ActivatedRoute) {
   }
 
@@ -26,16 +23,10 @@ export class MyCommentsComponent implements OnInit {
       this.commentService.getAllCommentsByMember(this.activatedRoute.snapshot.params.id).subscribe(comments => {
         this.comments = comments;
         this.isAdmin = true;
-      },
-      error => {
-        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
       });
     } else {
-        this.commentService.getLatestCommentsByLoggedInMember().subscribe(comments => {
-          this.comments = comments;
-        },
-      error => {
-        this.errorMessage = this.errorHandlerService.handleHttpErrorResponse(error);
+      this.commentService.getLatestCommentsByLoggedInMember().subscribe(comments => {
+        this.comments = comments;
       });
     }
   }

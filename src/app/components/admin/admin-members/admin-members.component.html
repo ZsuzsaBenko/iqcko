@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container-fluid admin-container">
   <div class="row">
-    <div *ngIf="!showError" class="col-12 col-sm-8 offset-sm-2 members-container">
+    <div class="col-12 col-sm-8 offset-sm-2 members-container">
       <h1>Felhasználók</h1>
       <div *ngFor="let member of members" class="memberDiv">
         <h3>{{ member.username }}</h3>
@@ -15,9 +15,6 @@
           </a>
         </div>
       </div>
-    </div>
-    <div *ngIf="showError" class="col-6">
-      {{ errorMessage }}
     </div>
   </div>
 </div>
