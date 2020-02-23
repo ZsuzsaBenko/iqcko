@@ -23,7 +23,6 @@ export class AddPuzzleComponent implements OnInit {
 
   constructor(private puzzleService: PuzzleService,
               private storage: AngularFireStorage,
-              private errorHandlerService: ErrorHandlerService,
               private router: Router) {
   }
 

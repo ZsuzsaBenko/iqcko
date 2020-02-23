@@ -38,6 +38,7 @@ import { PuzzleSortComponent } from './components/puzzles/puzzle-sort/puzzle-sor
 import { StarsComponent } from './components/puzzles/stars/stars.component';
 import { ErrorInterceptorService } from './services/error-interceptor.service';
 import { ErrorComponent } from './components/error/error.component';
+import { UpdatePuzzleComponent } from './components/update-puzzle/update-puzzle.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { ErrorComponent } from './components/error/error.component';
     PuzzleItemComponent,
     PuzzleSortComponent,
     StarsComponent,
-    ErrorComponent
+    ErrorComponent,
+    UpdatePuzzleComponent
   ],
   imports: [
     BrowserModule,

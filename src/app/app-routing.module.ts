@@ -13,6 +13,7 @@ import { AddPuzzleComponent } from './components/add-puzzle/add-puzzle.component
 import { AdminMembersComponent } from './components/admin/admin-members/admin-members.component';
 import { AdminPuzzlesComponent } from './components/admin/admin-puzzles/admin-puzzles.component';
 import { ErrorComponent } from './components/error/error.component';
+import { UpdatePuzzleComponent } from './components/update-puzzle/update-puzzle.component';
 
 const routes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -30,7 +31,7 @@ const routes: Routes = [
   {path: 'profile', canActivate: [AuthGuardService], component: ProfileComponent},
   {path: 'admin/puzzles', canActivate: [AdminAuthGuardService], component: AdminPuzzlesComponent},
   {path: 'admin/members', canActivate: [AdminAuthGuardService], component: AdminMembersComponent},
-  {path: 'admin/puzzles/edit/:id', canActivate: [AdminAuthGuardService], component: ProfileComponent},
+  {path: 'admin/puzzles/edit/:id', canActivate: [AdminAuthGuardService], component: UpdatePuzzleComponent},
   {path: 'admin/members/edit/:id', canActivate: [AdminAuthGuardService], component: ProfileComponent},
   {path: '**', redirectTo: 'home'}
 ];
