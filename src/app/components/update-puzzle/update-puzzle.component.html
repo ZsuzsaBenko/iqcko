@@ -14,29 +14,28 @@
                id="puzzle-edit-category"
                value="{{puzzleService.translateCategory(puzzle.category)}}"
                disabled>
-        <label *ngIf="!isCipher" for="puzzle-edit-instruction">Instrukció:</label>
-        <textarea *ngIf="!isCipher"
-                  id="puzzle-edit-instruction"
+        <label for="puzzle-edit-instruction">Instrukció:</label>
+        <textarea id="puzzle-edit-instruction"
                   name="puzzle-edit-instruction"
-                  [(ngModel)]="puzzle.instruction">
+                  [(ngModel)]="puzzle.instruction"
+                  [disabled]="isCipher">
         </textarea>
-        <label *ngIf="isCipher" for="cipher-instruction">Instrukció:</label>
-        <textarea *ngIf="isCipher" id="cipher-instruction" disabled>{{puzzle.instruction}}</textarea>
-        <label *ngIf="!isCipher && !isPicturePuzzle" for="puzzle-edit-item">Feladvány:</label>
-        <textarea *ngIf="!isCipher && !isPicturePuzzle"
+        <label *ngIf="!isPicturePuzzle" for="puzzle-edit-item">Feladvány:</label>
+        <textarea *ngIf="!isPicturePuzzle"
                   id="puzzle-edit-item"
                   name="puzzle-edit-item"
-                  [(ngModel)]="puzzle.puzzleItem">
+                  [(ngModel)]="puzzle.puzzleItem"
+                  [disabled]="isCipher">
         </textarea>
         <img *ngIf="isPicturePuzzle"
-             src="https://firebasestorage.googleapis.com/v0/b/puzzles-a6dd7.appspot.com/o/{{ puzzle.puzzleItem }}" alt="puzzle">
-        <label *ngIf="isCipher" for="cipher-item">Feladvány:</label>
-        <textarea *ngIf="isCipher" id="cipher-item" disabled>{{puzzle.puzzleItem}}</textarea>
+             src="https://firebasestorage.googleapis.com/v0/b/puzzles-a6dd7.appspot.com/o/{{ puzzle.puzzleItem }}"
+             alt="puzzle">
         <label for="puzzle-edit-answer">Helyes válasz:</label>
         <input type="text"
                id="puzzle-edit-answer"
                name="puzzle-edit-answer"
-               [(ngModel)]="puzzle.answer">
+               [(ngModel)]="puzzle.answer"
+               [disabled]="isCipher">
         <label for="puzzle-edit-level">Nehézség:</label>
         <input type="text"
                id="puzzle-edit-level"
