@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { AuthService } from './auth.service';
 import { Solution } from '../models/Solution';
 
 @Injectable({
@@ -10,13 +13,23 @@ export class SolutionService {
 
   constructor(private http: HttpClient) { }
 
-  sendSolution(solution: Solution) {
-    const url = this.baseUrl + 'save';
-    return this.http.post<Solution>(url, solution);
+  getAllSolutionsByLoggedInMember(): Observable<Solution[]> {
+    const url = this.baseUrl + 'logged-in-member';
+    return this.http.get<Solution[]>(url);
   }
 
-  getMySolutions() {
-    const url = this.baseUrl + 'member';
+  getAllSolutionsByMember(id: number): Observable<Solution[]> {
+    if (!AuthService.isAdmin()) {
+      return null;
+    }
+
+    const url = this.baseUrl + 'member/' + id;
     return this.http.get<Solution[]>(url);
+  }
+
+
+  saveSolution(solution: Solution): Observable<Solution> {
+    const url = this.baseUrl + 'save';
+    return this.http.post<Solution>(url, solution);
   }
 }

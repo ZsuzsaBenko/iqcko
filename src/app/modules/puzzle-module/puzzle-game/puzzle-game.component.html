@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div *ngIf="isFetching" class="col-12" id="game-spinner">
+          <div class="spinner-border spinner" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div *ngIf="!isFetching"
+          class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 puzzle-container">
+          <p *ngIf="puzzle.member !== null" class="puzzle-info">Beküldő: <span>{{ puzzle.member.username }}</span>
+            <span id="date"> {{ puzzle.submissionTime | date:'yyyy. MM. dd.' }}</span>
+          </p>
+          <h1>{{ puzzle.title }}</h1>
+          <p class="puzzle-info">Instrukció:
+            <span class="preserve-newline">{{ puzzle.instruction }}</span>
+          </p>
+          <div class="puzzle-item">
+            <p *ngIf="puzzle.category.toString() !== 'PICTURE_PUZZLE'" class="preserve-newline">{{ puzzle.puzzleItem }}</p>
+            <img src="https://firebasestorage.googleapis.com/v0/b/puzzles-a6dd7.appspot.com/o/{{ puzzle.puzzleItem }}" alt="puzzle"
+                 *ngIf="puzzle.category.toString() === 'PICTURE_PUZZLE'">
+          </div>
+          <p class="rating">
+            <app-stars [puzzle]="puzzle"></app-stars>
+          </p>
+          <div class="answer-form" *ngIf="!isSolved">
+            <form (ngSubmit)="onCheckAnswer(f)" #f="ngForm">
+              <label for="answer">Válasz: </label>
+              <input type="text" id="answer" name="answer" ngModel>
+              <div class="answer-btn-div">
+                <button id="cancel-button" type="button" (click)="onCancel()">Mégse</button>
+                <button id="check-button" type="submit">Helyes?</button>
+              </div>
+            </form>
+            <p *ngIf="isIncorrect" id="incorrect-message">Nem ez a helyes megoldás. Próbálkozz tovább!</p>
+          </div>
+          <div class="rating-box" *ngIf="isSolved">
+            <h3>Kiváló megfejtés!</h3>
+            <p>Értékeld a rejtvényt, és küldd be a megoldásod!</p>
+            <div style="text-align:center">
+              <star-rating value="5" checkedcolor="#00b300" uncheckedcolor="#444444" size="24px"
+                           readonly="false" (rate)="onRate($event)"></star-rating>
+            </div>
+            <button type="button" (click)="onSendSolution()">Küldés</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

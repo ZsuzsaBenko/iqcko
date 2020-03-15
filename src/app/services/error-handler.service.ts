@@ -1,23 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorHandlerService {
+  BAD_REQUEST = 400;
+  FORBIDDEN = 403;
+  EXPIRED_TOKEN_MESSAGE = 'Nem vagy bejelentkezve vagy lejárt a munkamenet. Jelentkezz be újra!';
+  errorMessage: string;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
-  handleHttpErrorResponse(error: HttpErrorResponse): string {
-    let errorMessage = '';
-    if (error.error.status >= 500) {
-      errorMessage = 'Szerverhiba történt. Próbáld újra egy kicsit később!';
-    } else if (error.error.status === 403) {
-      errorMessage = 'Nem vagy bejelentkezve vagy lejárt a munkamenet. Jelentkezz be újra!';
-    } else {
-      errorMessage = 'Ismeretlen hiba történt. Próbáld újra!';
+
+  handleHttpErrorResponse(error: HttpErrorResponse) {
+    const statusCode = error.error.statusCode;
+
+    if (this.FORBIDDEN === statusCode || this.BAD_REQUEST === statusCode) {
+      this.errorMessage = error.error.message;
+      return;
     }
-    return errorMessage;
+
+    if (this.FORBIDDEN === error.error.status) {
+      this.errorMessage = this.EXPIRED_TOKEN_MESSAGE;
+    } else {
+      this.errorMessage = error.error.message;
+    }
+    this.router.navigate(['error']);
   }
+
 }

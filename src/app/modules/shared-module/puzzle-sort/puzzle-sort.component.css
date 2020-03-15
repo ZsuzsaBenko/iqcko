@@ -1,0 +1,51 @@
+.sort {
+  width: 80%;
+  display: block;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #444444;
+  color: #f0fff0;
+  border: 2px solid #00b300;
+  border-radius: 10px;
+  font-size: 17px;
+}
+
+button {
+  float: right;
+}
+
+select {
+  display: inline-block;
+  margin: 0 20px;
+  width: 150px;
+}
+
+@media only screen and (max-width: 630px) {
+  .sort {
+    text-align: center;
+  }
+
+  select, button {
+    display: block;
+    float: none;
+    margin: 0 auto;
+  }
+
+  #sort-button {
+    margin: 20px auto;
+  }
+
+  button {
+    margin: 20px 0 10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  select, #sort-button {
+    margin: 0 auto;
+  }
+
+  #sort-button {
+    margin: 20px auto;
+  }
+}

@@ -1,0 +1,30 @@
+<div class="random-puzzle-container">
+  <div class="row">
+    <div *ngIf="isFetching" class="col-12">
+      <div class="spinner-border spinner" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div *ngIf="!isFetching"
+      class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 random-puzzles">
+      <h1>Ajánló</h1>
+      <div>
+        <fa-icon [icon]="faChevronLeft" class="fas fa-chevron-left"
+                 (click)="stepLeft()" [ngClass]="{'disabled-chevron': !isPrevious}"></fa-icon>
+        <div class="random-puzzle">
+          <h3>{{ currentPuzzle.title }}</h3>
+          <p class="puzzle-info">Kategória:</p>
+          <p>{{ puzzleService.translateCategory(currentPuzzle.category) | uppercase }} </p>
+          <p class="puzzle-info">Nehézség:</p>
+          <p>{{ puzzleService.translateLevel(currentPuzzle.level) | uppercase }}</p>
+          <p class="rating">
+            <app-stars [puzzle]="currentPuzzle"></app-stars>
+          </p>
+          <button type="button" routerLink="/puzzles/{{ currentPuzzle.id }}">Megoldom!</button>
+        </div>
+        <fa-icon [icon]="faChevronRight" class="fas fa-chevron-right"
+                 (click)="stepRight()" [ngClass]="{'disabled-chevron': !isNext}"></fa-icon>
+      </div>
+    </div>
+  </div>
+</div>

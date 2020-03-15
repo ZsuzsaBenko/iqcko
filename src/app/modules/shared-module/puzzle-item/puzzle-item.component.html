@@ -1,0 +1,27 @@
+<div class="puzzle">
+  <p *ngIf="puzzle.member" class="puzzle-info">Beküldő: <span>{{ puzzle.member.username }}</span>
+    <span class="date"> {{ puzzle.submissionTime | date:'yyyy. MM. dd.' }}</span>
+  </p>
+  <h3>
+    <span *ngIf="puzzle.solved" class="solved"> <fa-icon [icon]="faCheck" class="fas fa-check"></fa-icon>
+    </span>{{ puzzle.title }}
+    <span *ngIf="!puzzle.member" class="date"> {{ puzzle.submissionTime | date:'yyyy. MM. dd.' }}</span>
+  </h3>
+  <p class="puzzle-info">Kategória:
+    <span>{{ puzzleService.translateCategory(puzzle.category) | uppercase }}</span>
+  </p>
+  <p class="puzzle-info">Nehézség:
+    <span>{{ puzzleService.translateLevel(puzzle.level) | uppercase }}</span>
+  </p>
+  <p class="rating">
+    <app-stars [puzzle]="puzzle"></app-stars>
+    <button *ngIf="!isAdmin" type="button" routerLink="/puzzles/{{ puzzle.id }}">Megoldom!</button>
+    <button *ngIf="!isAdmin" type="button" routerLink="/puzzles/{{ puzzle.id }}/comments">Hozzászólások</button>
+  </p>
+  <div *ngIf="isAdmin" class="modification">
+    <fa-icon [icon]="faTrash" class="fas mod" (click)="deletePuzzle(puzzle.id)"></fa-icon>
+    <a [routerLink]="['/admin/puzzles/edit', puzzle.id]">
+      <fa-icon [icon]="faEdit" class="fas mod"></fa-icon>
+    </a>
+  </div>
+</div>

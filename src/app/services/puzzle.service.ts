@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
+import { AuthService } from './auth.service';
 import { Puzzle } from '../models/Puzzle';
 import { Category } from '../models/Category';
 import { Level } from '../models/Level';
@@ -15,21 +17,34 @@ export class PuzzleService {
   constructor(private http: HttpClient) {
   }
 
-  getRandomPuzzles() {
-    const url = this.baseUrl + 'random';
-    return this.http.get<Puzzle[]>(url);
-  }
-
-  getAllPuzzles() {
+  getAllPuzzles(): Observable<Puzzle[]> {
     const url = this.baseUrl + 'all';
     return this.http.get<Puzzle[]>(url);
   }
 
-  getPuzzlesByCategory(category: Category) {
+  getRandomPuzzles(): Observable<Puzzle[]> {
+    const url = this.baseUrl + 'random';
+    return this.http.get<Puzzle[]>(url);
+  }
+
+  getAllPuzzlesByLoggedInMember(): Observable<Puzzle[]> {
+    const url = this.baseUrl + 'logged-in-member';
+    return this.http.get<Puzzle[]>(url);
+  }
+
+  getAllPuzzlesByMember(memberId: number): Observable<Puzzle[]> {
+    if (!AuthService.isAdmin()) {
+      return null;
+    }
+    const url = this.baseUrl + 'member/' + memberId;
+    return this.http.get<Puzzle[]>(url);
+  }
+
+  getPuzzlesByCategory(category: Category): Observable<Puzzle[]> {
     return this.http.get<Puzzle[]>(this.baseUrl + category.toString());
   }
 
-  getSortedPuzzles(category: Category, sortingParam: string) {
+  getSortedPuzzles(category: Category, sortingParam: string): Observable<Puzzle[]> {
     const url = this.baseUrl + 'sort/';
     if (!category) {
       return this.http.get<Puzzle[]>(url + sortingParam);
@@ -38,19 +53,32 @@ export class PuzzleService {
     }
   }
 
-  getPuzzlesByMember() {
-    const url = this.baseUrl + 'member';
-    return this.http.get<Puzzle[]>(url);
-  }
-
-  getPuzzleById(id: number) {
+  getPuzzleById(puzzleId: number): Observable<Puzzle> {
     const url = this.baseUrl + 'all/';
-    return this.http.get<Puzzle>(url + id);
+    return this.http.get<Puzzle>(url + puzzleId);
   }
 
-  addNewPuzzle(puzzle: Puzzle) {
+  addNewPuzzle(puzzle: Puzzle): Observable<Puzzle> {
     const url = this.baseUrl + 'add';
     return this.http.post<Puzzle>(url, puzzle);
+  }
+
+  updatePuzzle(puzzleId: number, updatePuzzle: Puzzle): Observable<Puzzle> {
+    if (!AuthService.isAdmin()) {
+      return null;
+    }
+
+    const url = this.baseUrl + 'update/' + puzzleId;
+    return this.http.put<Puzzle>(url, updatePuzzle);
+  }
+
+  deletePuzzle(puzzleId: number): Observable<any> {
+    if (!AuthService.isAdmin()) {
+      return null;
+    }
+
+    const url = this.baseUrl + 'delete/' + puzzleId;
+    return this.http.delete(url);
   }
 
   translateCategory(category: Category) {

@@ -1,0 +1,116 @@
+.fas {
+  display: inline;
+  font-size: 15px;
+  color: #00b300;
+  padding: 5px;
+}
+
+.solved .fas.fa-check {
+  font-size: 25px;
+  padding-left: 0;
+}
+
+.puzzle {
+  width: 80%;
+  display: block;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #444444;
+  color: #f0fff0;
+  border: 2px solid #00b300;
+  border-radius: 10px;
+  font-size: 17px;
+  position: relative;
+}
+
+.puzzle h3 {
+  padding-bottom: 20px;
+}
+
+.date {
+  float: right;
+  font-size: 16px;
+}
+
+.puzzle-info {
+  color: #00b300;
+}
+
+.puzzle-info span {
+  color: #f0fff0;
+}
+
+button {
+  float: right;
+}
+
+.puzzle button:last-child {
+  margin-right: 10px;
+}
+
+.modification {
+  display: flex;
+  width: 120px;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.fas.mod {
+  font-size: 30px;
+  padding: 0;
+  color: #00b300;
+  vertical-align: middle;
+  transition: color 1s;
+}
+
+.fas.mod:hover {
+  cursor: pointer;
+  color: #f0fff0;
+}
+
+.modification fa-icon {
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+  .modification {
+    width: 80px;
+    height: 50px;
+    margin: 0 auto;
+    position: static;
+  }
+  .modification fa-icon {
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .sort {
+    text-align: center;
+  }
+
+  button {
+    display: block;
+    float: none;
+    margin: 0 auto;
+  }
+
+  #sort-button {
+    margin: 20px auto;
+  }
+
+  button {
+    margin: 20px 0 10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .date {
+    display: block;
+    float: none;
+  }
+}

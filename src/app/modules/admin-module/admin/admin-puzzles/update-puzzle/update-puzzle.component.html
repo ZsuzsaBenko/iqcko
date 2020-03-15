@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 form-container">
+      <h2>Rejtvény szerkesztése</h2>
+      <form #f="ngForm" (ngSubmit)="onSubmit()">
+        <label for="puzzle-edit-title">Cím:</label>
+        <input type="text"
+               id="puzzle-edit-title"
+               name="puzzle-edit-title"
+               [(ngModel)]="puzzle.title">
+        <label for="puzzle-edit-category">Kategória:</label>
+        <input type="text"
+               id="puzzle-edit-category"
+               value="{{puzzleService.translateCategory(puzzle.category)}}"
+               disabled>
+        <label for="puzzle-edit-instruction">Instrukció:</label>
+        <textarea id="puzzle-edit-instruction"
+                  name="puzzle-edit-instruction"
+                  [(ngModel)]="puzzle.instruction"
+                  [disabled]="isCipher">
+        </textarea>
+        <label *ngIf="!isPicturePuzzle" for="puzzle-edit-item">Feladvány:</label>
+        <textarea *ngIf="!isPicturePuzzle"
+                  id="puzzle-edit-item"
+                  name="puzzle-edit-item"
+                  [(ngModel)]="puzzle.puzzleItem"
+                  [disabled]="isCipher">
+        </textarea>
+        <img *ngIf="isPicturePuzzle"
+             src="https://firebasestorage.googleapis.com/v0/b/puzzles-a6dd7.appspot.com/o/{{ puzzle.puzzleItem }}"
+             alt="puzzle">
+        <label for="puzzle-edit-answer">Helyes válasz:</label>
+        <input type="text"
+               id="puzzle-edit-answer"
+               name="puzzle-edit-answer"
+               [(ngModel)]="puzzle.answer"
+               [disabled]="isCipher">
+        <label for="puzzle-edit-level">Nehézség:</label>
+        <input type="text"
+               id="puzzle-edit-level"
+               value="{{puzzleService.translateLevel(puzzle.level)}}"
+               disabled>
+        <button type="submit" [disabled]="f.invalid">Küldés</button>
+      </form>
+    </div>
+  </div>
+</div>
