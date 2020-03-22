@@ -25,6 +25,7 @@ export class ErrorHandlerService {
 
     if (this.FORBIDDEN === error.error.status) {
       this.errorMessage = this.EXPIRED_TOKEN_MESSAGE;
+      setTimeout( () => this.router.navigate(['/']), 5000);
     } else {
       this.errorMessage = error.error.message;
     }
