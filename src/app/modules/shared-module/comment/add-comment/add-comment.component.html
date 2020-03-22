@@ -3,9 +3,9 @@
   <textarea name="message" id="message" ngModel required></textarea>
   <div id="agreement">
     <label for="agreement">
-      <input type="checkbox" name="agreement" ngModel> A hozzászólás nem tartalmazza a rejtvény megoldását vagy a helyes megoldásra történő
+      <input type="checkbox" name="agreement" ngModel required> A hozzászólás nem tartalmazza a rejtvény megoldását vagy a helyes megoldásra történő
       bármilyen utalást, sem semmilyen sértő megjegyzést.</label>
   </div>
-  <button type="submit" [disabled]="(f.invalid || !f.value.agreement) && f.touched">Hozzászólás küldése</button>
+  <button type="submit" [disabled]="(f.invalid || !f.value.agreement)">Hozzászólás küldése</button>
 </form>
 
