@@ -102,6 +102,10 @@ button {
   text-align: center;
 }
 
+.rating-stars {
+  text-align: center;
+}
+
 .rating-box button {
   float: none;
   margin: 30px auto 20px;
@@ -141,4 +145,12 @@ button {
   .puzzle-item img {
     width: 95%;
   }
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #f0fff0;
+}
+.filled {
+  color: #00b300;
 }

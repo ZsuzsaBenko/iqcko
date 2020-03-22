@@ -7,7 +7,6 @@ import { SolutionService } from '../../../services/solution.service';
 import { PuzzleService } from '../../../services/puzzle.service';
 import { Puzzle } from '../../../models/Puzzle';
 import { Solution } from '../../../models/Solution';
-import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-puzzle-game',
@@ -53,10 +52,6 @@ export class PuzzleGameComponent implements OnInit {
       this.isIncorrect = true;
       setTimeout(() => this.isIncorrect = false, 3000);
     }
-  }
-
-  onRate($event: { oldValue: number, newValue: number, starRating: StarRatingComponent }) {
-    this.rating = $event.newValue;
   }
 
   onSendSolution() {

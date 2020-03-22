@@ -10,10 +10,10 @@ import { SimpleCommentItemComponent } from './comment/comment-item/simple-commen
 import { ProfileCommentItemComponent } from './comment/comment-item/profile-comment-item/profile-comment-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { RatingModule } from 'ng-starrating';
 import { PuzzleItemComponent } from './puzzle-item/puzzle-item.component';
 import { PuzzleSortComponent } from './puzzle-sort/puzzle-sort.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
-    RatingModule,
     RouterModule,
+    NgbRatingModule
   ],
   exports: [
     AddCommentComponent,
@@ -49,8 +49,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
-    RatingModule,
     RouterModule,
+    NgbRatingModule
   ]
 })
 export class SharedModule {
