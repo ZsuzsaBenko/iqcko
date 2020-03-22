@@ -20,8 +20,12 @@ li {
 
 #logo {
   float: left;
+}
+
+#logo a {
   color: #00b300;
   font-size: 30px;
+  text-decoration: none;
 }
 
 .fas {
