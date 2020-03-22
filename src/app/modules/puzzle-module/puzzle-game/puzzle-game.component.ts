@@ -46,12 +46,14 @@ export class PuzzleGameComponent implements OnInit {
 
     form.reset();
 
-    if (answer === this.puzzle.answer.trim().toLowerCase()) {
-      this.isSolved = true;
-    } else {
-      this.isIncorrect = true;
-      setTimeout(() => this.isIncorrect = false, 3000);
-    }
+    this.puzzleService.checkAnswer(this.puzzle.id, answer).subscribe(isCorrect => {
+      if (isCorrect) {
+        this.isSolved = true;
+      } else {
+        this.isIncorrect = true;
+        setTimeout(() => this.isIncorrect = false, 3000);
+      }
+    });
   }
 
   onSendSolution() {

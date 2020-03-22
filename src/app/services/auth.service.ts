@@ -17,17 +17,12 @@ export class AuthService {
     return data.indexOf('ADMIN') >= 0;
   }
 
-  static getLoggedInMemberEmail(): string {
-    const data = this.getTokenData();
-    return data.substring(8, data.indexOf(',') - 1);
-  }
-
   static getTokenData(): string {
     const token = localStorage.getItem('token');
     return token ? atob(token.substring(token.indexOf('.') + 1, token.lastIndexOf('.'))) : '';
   }
 
-  login(data: {email: string, password: string}): Observable<any> {
+  login(data: { email: string, password: string }): Observable<any> {
     return this.http.post(this.url, data);
   }
 }

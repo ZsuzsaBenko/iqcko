@@ -58,6 +58,11 @@ export class PuzzleService {
     return this.http.get<Puzzle>(url + puzzleId);
   }
 
+  getPuzzleByIdForAdmin(puzzleId: number): Observable<Puzzle> {
+    const url = this.baseUrl + 'all/' + puzzleId + '/admin';
+    return this.http.get<Puzzle>(url);
+  }
+
   addNewPuzzle(puzzle: Puzzle): Observable<Puzzle> {
     const url = this.baseUrl + 'add';
     return this.http.post<Puzzle>(url, puzzle);
@@ -79,6 +84,11 @@ export class PuzzleService {
 
     const url = this.baseUrl + 'delete/' + puzzleId;
     return this.http.delete(url);
+  }
+
+  checkAnswer(puzzleId: number, answer: string): Observable<boolean> {
+    const url = this.baseUrl + puzzleId + '/check';
+    return this.http.post<boolean>(url, answer);
   }
 
   translateCategory(category: Category) {

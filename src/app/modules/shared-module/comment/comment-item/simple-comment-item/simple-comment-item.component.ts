@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { AuthService } from '../../../../../services/auth.service';
 import { CommentService } from '../../../../../services/comment.service';
+import { Member } from '../../../../../models/Member';
 import { PuzzleComment } from '../../../../../models/PuzzleComment';
 import { CommentItemBaseComponent } from '../comment-item-base.component';
 
@@ -14,6 +15,7 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
 })
 export class SimpleCommentItemComponent extends CommentItemBaseComponent implements OnInit {
   @Input() comment: PuzzleComment;
+  @Input() loggedInMember: Member;
   isOwnComment: boolean;
   faEdit = faEdit;
 
@@ -22,7 +24,7 @@ export class SimpleCommentItemComponent extends CommentItemBaseComponent impleme
   }
 
   ngOnInit() {
-    this.isOwnComment = this.comment.member.email === AuthService.getLoggedInMemberEmail();
+    this.isOwnComment = this.comment.member.id === this.loggedInMember.id;
   }
 
 }

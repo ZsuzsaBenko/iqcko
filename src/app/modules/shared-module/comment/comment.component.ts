@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { CommentService } from '../../../services/comment.service';
 import { PuzzleComment } from '../../../models/PuzzleComment';
+import { Member } from '../../../models/Member';
+import { MemberService } from '../../../services/member.service';
 
 @Component({
   selector: 'app-comment',
@@ -12,9 +14,11 @@ import { PuzzleComment } from '../../../models/PuzzleComment';
 export class CommentComponent implements OnInit {
   comments: PuzzleComment[];
   puzzleId: number;
+  loggedInMember = new Member();
   isFetching = true;
 
   constructor(private commentService: CommentService,
+              private memberService: MemberService,
               private activatedRoute: ActivatedRoute) {
   }
 
@@ -28,6 +32,8 @@ export class CommentComponent implements OnInit {
       this.comments = comments;
       this.isFetching = false;
     });
+
+    this.memberService.getLoggedInMemberProfile().subscribe(member => this.loggedInMember = member);
   }
 
 }

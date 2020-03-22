@@ -9,7 +9,7 @@ export class Puzzle {
   title: string;
   instruction: string;
   puzzleItem: string;
-  answer: string;
+  answer?: string;
   submissionTime: Date;
   rating: number;
   member: Member;

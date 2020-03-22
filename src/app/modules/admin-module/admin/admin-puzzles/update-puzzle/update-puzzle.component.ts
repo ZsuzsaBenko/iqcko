@@ -21,7 +21,7 @@ export class UpdatePuzzleComponent implements OnInit {
 
   ngOnInit() {
     const puzzleId = this.activatedRoute.snapshot.params.id;
-    this.puzzleService.getPuzzleById(puzzleId).subscribe((puzzle: Puzzle) => {
+    this.puzzleService.getPuzzleByIdForAdmin(puzzleId).subscribe((puzzle: Puzzle) => {
       this.puzzle = puzzle;
       this.isPicturePuzzle = Category.PICTURE_PUZZLE === puzzle.category;
       this.isCipher = Category.CIPHER === puzzle.category;
