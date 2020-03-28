@@ -11,7 +11,8 @@ import { Solution } from '../models/Solution';
 export class SolutionService {
   baseUrl = 'https://puzzles-app.herokuapp.com/solutions/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllSolutionsByLoggedInMember(): Observable<Solution[]> {
     const url = this.baseUrl + 'logged-in-member';
@@ -31,5 +32,13 @@ export class SolutionService {
   saveSolution(solution: Solution): Observable<Solution> {
     const url = this.baseUrl + 'save';
     return this.http.post<Solution>(url, solution);
+  }
+
+  deleteSolution(solutionId): Observable<any> {
+    if (!AuthService.isAdmin()) {
+      return null;
+    }
+    const url = this.baseUrl + 'delete/' + solutionId;
+    return this.http.delete(url);
   }
 }

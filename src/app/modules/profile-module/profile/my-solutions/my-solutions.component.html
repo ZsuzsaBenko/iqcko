@@ -5,7 +5,7 @@
     <button type="button" *ngIf="isVisible" (click)="toggleVisible()">Becsukom</button>
     <ul *ngIf="isVisible">
       <li *ngFor="let solution of solutions">
-        <a routerLink="/puzzles/{{ solution.puzzle.id }}">
+        <a *ngIf="!isOnAdminPage" routerLink="/puzzles/{{ solution.puzzle.id }}">
           <div class="solution-div">
             <h3>{{ solution.puzzle.title }}
               <span> - {{ puzzleService.translateCategory(solution.puzzle.category) }} |
@@ -22,6 +22,23 @@
             </div>
           </div>
         </a>
+
+        <div *ngIf="isOnAdminPage">
+          <div class="solution-div">
+            <h3>{{ solution.puzzle.title }}
+              <span> - {{ puzzleService.translateCategory(solution.puzzle.category) }} |
+                {{ puzzleService.translateLevel(solution.puzzle.level) }}</span>
+            </h3>
+            <p>Dátum: <span>{{ solution.submissionTime | date: 'yyyy. MM. dd.' }}</span></p>
+            <p>Gyorsaság: <span>{{ countSpeed(solution.seconds) }}</span></p>
+            <div class="modification" *ngIf="isAdmin && isOnAdminPage">
+              <fa-icon [icon]="faTrash" class="fas" (click)="deleteSolution(solution.id)"></fa-icon>
+              <a [routerLink]="['/admin/puzzles/edit/', solution.puzzle.id]">
+                <fa-icon [icon]="faEdit" class="fas"></fa-icon>
+              </a>
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
