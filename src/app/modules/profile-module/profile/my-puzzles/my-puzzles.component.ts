@@ -24,7 +24,7 @@ export class MyPuzzlesComponent implements OnInit {
   faFont = faFont;
   faPenFancy = faPenFancy;
 
-  constructor(private puzzleService: PuzzleService,
+  constructor(public puzzleService: PuzzleService,
               private activatedRoute: ActivatedRoute) {
   }
 

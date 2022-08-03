@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 
 import { AuthInterceptorService } from './services/auth-interceptor.service';
@@ -13,6 +11,8 @@ import { SharedModule } from './modules/shared-module/shared.module';
 import { WelcomeModule } from './modules/welcome-module/welcome.module';
 
 import { AppComponent } from './app.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [

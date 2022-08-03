@@ -32,8 +32,8 @@ export class MySolutionsComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
 
-  constructor(private solutionService: SolutionService,
-              private puzzleService: PuzzleService,
+  constructor(public puzzleService: PuzzleService,
+              private solutionService: SolutionService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
   }

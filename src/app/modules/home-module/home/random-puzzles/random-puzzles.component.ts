@@ -20,7 +20,7 @@ export class RandomPuzzlesComponent implements OnInit {
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
 
-  constructor(private puzzleService: PuzzleService) {
+  constructor(public puzzleService: PuzzleService) {
   }
 
   ngOnInit() {

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AngularFireStorage } from '@angular/fire/storage';
 
 import { Puzzle } from '../../../models/Puzzle';
 import { Category } from '../../../models/Category';
 import { PuzzleService } from '../../../services/puzzle.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 
 @Component({
