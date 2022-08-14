@@ -1,0 +1,18 @@
+<div *ngIf="comment" class="profile-comment">
+    <a routerLink="/puzzles/{{ comment.puzzle.id }}/comments">
+        <h3>Rejtvény: <span>{{ comment.puzzle.title}}</span></h3>
+    </a>
+    <p *ngIf="!isAdmin">Legutolsó hozzászólás: <span>{{ comment.message }}</span></p>
+    <p *ngIf="isAdmin">Hozzászólás:
+        <span (keydown.enter)="updateComment(comment.id)"
+              [contentEditable]="isEditable"
+              [ngClass]="{'inEditMode': isEditable}"
+              class="messageText-{{comment.id}}">{{ comment.message }}
+        </span>
+    </p>
+    <p>Dátum: <span>{{ comment.submissionTime | date: 'yyyy. MM. dd.'}}</span></p>
+    <div *ngIf="isAdmin" class="modification">
+        <fa-icon [icon]="faTrash" class="fas" (click)="deleteComment(comment.id)"></fa-icon>
+        <fa-icon [icon]="faEdit" class="fas" (click)="toggleEditable()"></fa-icon>
+    </div>
+</div>

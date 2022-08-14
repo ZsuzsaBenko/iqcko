@@ -1,0 +1,11 @@
+<fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="0 < puzzle.rating && 1 > puzzle.rating"></fa-icon>
+<fa-icon [icon]="faStar" class="fas" *ngIf="1 <= puzzle.rating"></fa-icon>
+<fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="1 < puzzle.rating && 2 > puzzle.rating"></fa-icon>
+<fa-icon [icon]="faStar" class="fas" *ngIf="2 <= puzzle.rating"></fa-icon>
+<fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="2 < puzzle.rating && 3 > puzzle.rating"></fa-icon>
+<fa-icon [icon]="faStar" class="fas" *ngIf="3 <= puzzle.rating"></fa-icon>
+<fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="3 < puzzle.rating && 4 > puzzle.rating"></fa-icon>
+<fa-icon [icon]="faStar" class="fas" *ngIf="4 <= puzzle.rating"></fa-icon>
+<fa-icon [icon]="faStarHalfAlt" class="fas" *ngIf="4 < puzzle.rating && 5 > puzzle.rating"></fa-icon>
+<fa-icon [icon]="faStar" class="fas" *ngIf="5 === puzzle.rating"></fa-icon>
+<span id="no-rating" *ngIf="0 === puzzle.rating">Még nincs értékelés.</span>

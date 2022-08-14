@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <label for="message">Szólj hozzá!</label>
+    <textarea name="message" id="message" ngModel required></textarea>
+    <div id="agreement-box">
+        <input type="checkbox" name="agreement" id="agreement" ngModel required>
+        <label for="agreement" class="checkbox-label">A hozzászólás nem tartalmazhatja a rejtvény
+            megoldását vagy a helyes megoldásra történő
+            bármilyen utalást, sem semmilyen sértő megjegyzést.</label>
+    </div>
+    <button type="submit" [disabled]="(form.invalid || !form.value.agreement)">Hozzászólás küldése</button>
+</form>
+

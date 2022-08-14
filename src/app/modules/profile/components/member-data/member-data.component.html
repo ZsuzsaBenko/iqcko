@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 my-data">
+        <div class="row">
+            <div class="d-none d-md-block col-md-4 img-div">
+                <img src="assets/avatar1.png" alt="user-icon" id="user-icon">
+            </div>
+            <div class="col-12 col-md-8 data-div">
+                <h1>{{ member.username }}</h1>
+                <h2>{{ member.score }} pont</h2>
+                <button type="button"
+                        class="personal-data"
+                        (click)="toggleFormVisible()">
+                    {{isFormVisible ? 'Becsukom' : 'Személyes adatok módosítása'}}
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form *ngIf="isFormVisible"
+                      id="manage-form"
+                      (ngSubmit)="changeUserData()"
+                      #form="ngForm">
+                    <div>
+                        <label for="username">Új felhasználónév:</label>
+                        <input type="text"
+                               id="username"
+                               name="username"
+                               ngModel>
+                    </div>
+                    <div>
+                        <label for="pass">Új jelszó:</label>
+                        <input type="password"
+                               id="pass"
+                               name="pass"
+                               [minlength]="passwordMinLength"
+                               ngModel
+                               placeholder="Legalább 8 karakter.">
+                    </div>
+                    <div>
+                        <label for="confirmPass">Új jelszó megerősítése:</label>
+                        <input type="password"
+                               id="confirmPass"
+                               name="confirmPass"
+                               [minlength]="passwordMinLength"
+                               ngModel>
+                    </div>
+                    <p *ngIf="errorMessage" class="error-message">{{errorMessage}}</p>
+                    <button type="submit"
+                            [disabled]="isSubmitDisabled()">Küldés
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

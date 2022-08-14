@@ -1,44 +1,35 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-import { AuthService } from './auth.service';
-import { Solution } from '../models/Solution';
+import { environment } from '../../environments/environment';
+import { API_PATHS } from '../models/constants';
+import { Solution } from '../models/interfaces';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class SolutionService {
-  baseUrl = 'https://puzzles-app.herokuapp.com/solutions/';
+    private readonly baseUrl = `${environment.apiUrl}/${API_PATHS.BASE.SOLUTIONS}`;
 
-  constructor(private http: HttpClient) {
-  }
-
-  getAllSolutionsByLoggedInMember(): Observable<Solution[]> {
-    const url = this.baseUrl + 'logged-in-member';
-    return this.http.get<Solution[]>(url);
-  }
-
-  getAllSolutionsByMember(id: number): Observable<Solution[]> {
-    if (!AuthService.isAdmin()) {
-      return null;
+    constructor(private readonly http: HttpClient) {
     }
 
-    const url = this.baseUrl + 'member/' + id;
-    return this.http.get<Solution[]>(url);
-  }
-
-
-  saveSolution(solution: Solution): Observable<Solution> {
-    const url = this.baseUrl + 'save';
-    return this.http.post<Solution>(url, solution);
-  }
-
-  deleteSolution(solutionId): Observable<any> {
-    if (!AuthService.isAdmin()) {
-      return null;
+    getAllSolutionsByLoggedInMember(): Observable<Array<Solution>> {
+        const url = `${this.baseUrl}/${API_PATHS.SEGMENTS.MEMBER}/${API_PATHS.SEGMENTS.LOGGED_IN}`;
+        return this.http.get<Array<Solution>>(url);
     }
-    const url = this.baseUrl + 'delete/' + solutionId;
-    return this.http.delete(url);
-  }
+
+    getAllSolutionsByMember(id: number): Observable<Array<Solution>> {
+        const url = `${this.baseUrl }/${API_PATHS.SEGMENTS.MEMBER}/${id}`;
+        return this.http.get<Array<Solution>>(url);
+    }
+
+    saveSolution(solution: Solution): Observable<Solution> {
+        return this.http.post<Solution>(this.baseUrl, solution);
+    }
+
+    deleteSolution(solutionId: number): Observable<any> {
+        const url = `${this.baseUrl}/${solutionId}`;
+        return this.http.delete(url);
+    }
 }

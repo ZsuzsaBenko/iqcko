@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 my-comments">
+        <h2>Hozzászólások</h2>
+        <button type="button"
+                (click)="toggleVisible()">
+            {{isVisible ? 'Becsukom' : 'Megnézem'}}
+        </button>
+        <ul *ngIf="commentsLoaded && isVisible && comments.length">
+            <li *ngFor="let comment of comments">
+                <app-profile-comment-item [comment]="comment"
+                                          (commentDeleted)="onCommentDeleted($event)">
+                </app-profile-comment-item>
+            </li>
+        </ul>
+        <p *ngIf="commentsLoaded && isVisible && !comments.length" class="empty-list">Nincsenek hozzászólások.</p>
+    </div>
+</div>

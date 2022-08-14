@@ -1,28 +1,38 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { API_PATHS, TOKEN_STORAGE_KEY } from '../models/constants';
 
+interface JWTToken {
+    sub?: string;
+    roles?: Array<string>;
+    iat?: number;
+    exp?: number;
+}
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthService {
-  url = 'https://puzzles-app.herokuapp.com/login';
+    private readonly url = `${environment.apiUrl}/${API_PATHS.LOGIN}`;
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private readonly http: HttpClient) {
+    }
 
-  static isAdmin() {
-    const data = this.getTokenData();
-    return data.indexOf('ADMIN') >= 0;
-  }
+    static isAdmin(): boolean {
+        const data: JWTToken = this.getTokenData();
+        return !!data?.roles?.includes('ADMIN');
+    }
 
-  static getTokenData(): string {
-    const token = localStorage.getItem('token');
-    return token ? atob(token.substring(token.indexOf('.') + 1, token.lastIndexOf('.'))) : '';
-  }
+    private static getTokenData(): JWTToken {
+        const token = localStorage.getItem(TOKEN_STORAGE_KEY);
+        const jwtHelper = new JwtHelperService();
+        return null !== token ? jwtHelper.decodeToken<JWTToken>(token) : {};
+    }
 
-  login(data: { email: string, password: string }): Observable<any> {
-    return this.http.post(this.url, data);
-  }
+    login(data: { email: string; password: string }): Observable<{ token: string }> {
+        return this.http.post<{ token: string }>(this.url, data);
+    }
 }

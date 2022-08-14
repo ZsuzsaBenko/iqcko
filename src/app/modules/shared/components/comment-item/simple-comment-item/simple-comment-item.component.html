@@ -1,0 +1,16 @@
+<div class="simple-comment">
+    <p>
+        <span>{{ comment.member.username }}</span>
+        <span>{{ comment.submissionTime | date: 'yyyy. MM. dd.' }}</span>
+    </p>
+    <p>
+        <span (keydown.enter)="updateComment(comment.id)"
+             [contentEditable]="isEditable"
+             [ngClass]="{'inEditMode': isEditable}"
+             class="messageText-{{comment.id}}">{{ comment.message }}
+        </span>
+    </p>
+    <div *ngIf="isOwnComment" class="modification">
+        <fa-icon [icon]="faEdit" class="fas" (click)="toggleEditable()"></fa-icon>
+    </div>
+</div>

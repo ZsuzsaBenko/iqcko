@@ -1,0 +1,77 @@
+a {
+    text-decoration: none;
+}
+
+.modification {
+    display: flex;
+    width: 120px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.fas {
+    font-size: 30px;
+    color: #00b300;
+    vertical-align: middle;
+    transition: color 1s;
+}
+
+.fas:hover {
+    cursor: pointer;
+    color: #f0fff0;
+}
+
+.modification fa-icon {
+    margin-right: 10px;
+}
+
+.profile-comment {
+    border-radius: 10px;
+    background-color: #444444;
+    border: 2px solid #00b300;
+    padding: 15px;
+    position: relative;
+}
+
+.profile-comment h3 {
+    color: #00b300;
+}
+
+.profile-comment p {
+    margin: 0 0 0 30px;
+}
+
+.profile-comment p:first-child {
+    margin-top: 10px;
+}
+
+.profile-comment p span, h3 span {
+    color: #f0fff0;
+}
+
+.profile-comment p > span.inEditMode {
+    color: firebrick;
+    background-color: #f0fff0;
+}
+
+@media only screen and (max-width: 600px) {
+    p {
+        margin: 10px 0;
+    }
+
+    .modification {
+        width: 80px;
+        height: 50px;
+        margin: 0 auto;
+        position: static;
+    }
+
+    .modification fa-icon {
+        margin-right: 20px;
+    }
+
+}

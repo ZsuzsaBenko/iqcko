@@ -1,53 +1,43 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-import { AuthService } from './auth.service';
-import { PuzzleComment } from '../models/PuzzleComment';
+import { environment } from '../../environments/environment';
+import { API_PATHS } from '../models/constants';
+import { PuzzleComment } from '../models/interfaces';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CommentService {
-  baseUrl = 'https://puzzles-app.herokuapp.com/comments/';
+    private readonly baseUrl = `${environment.apiUrl}/${API_PATHS.BASE.COMMENTS}`;
 
-  constructor(private http: HttpClient) {
-  }
-
-  getAllCommentsByPuzzle(puzzleId: number): Observable<PuzzleComment[]> {
-    return this.http.get<PuzzleComment[]>(this.baseUrl + puzzleId);
-  }
-
-  getLatestCommentsByLoggedInMember(): Observable<PuzzleComment[]> {
-    const url = this.baseUrl + 'logged-in-member';
-    return this.http.get<PuzzleComment[]>(url);
-  }
-
-  getAllCommentsByMember(memberId: number): Observable<PuzzleComment[]> {
-    if (!AuthService.isAdmin()) {
-      return null;
+    constructor(private readonly http: HttpClient) {
     }
 
-    const url = this.baseUrl + 'member/' + memberId;
-    return this.http.get<PuzzleComment[]>(url);
-  }
-
-  addNewComment(newComment: PuzzleComment): Observable<PuzzleComment> {
-    const url = this.baseUrl + 'add';
-    return this.http.post<PuzzleComment>(url, newComment);
-  }
-
-  editComment(commentId: number, editedComment: PuzzleComment): Observable<PuzzleComment> {
-    const url = this.baseUrl + 'update/' + commentId;
-    return this.http.put<PuzzleComment>(url, editedComment);
-  }
-
-  deleteComment(commentId: number): Observable<any> {
-    if (!AuthService.isAdmin()) {
-      return null;
+    getAllCommentsByPuzzle(puzzleId: number): Observable<Array<PuzzleComment>> {
+        const url = `${this.baseUrl}/${API_PATHS.SEGMENTS.PUZZLE}/${puzzleId}`;
+        return this.http.get<Array<PuzzleComment>>(url);
     }
 
-    const url = this.baseUrl + 'delete/' + commentId;
-    return this.http.delete(url);
-  }
+    getLatestCommentsByLoggedInMember(): Observable<Array<PuzzleComment>> {
+        const url = `${this.baseUrl}/${API_PATHS.SEGMENTS.MEMBER}/${API_PATHS.SEGMENTS.LOGGED_IN}`;
+        return this.http.get<Array<PuzzleComment>>(url);
+    }
+
+    getAllCommentsByMember(memberId: number): Observable<Array<PuzzleComment>> {
+        const url = `${this.baseUrl}/${API_PATHS.SEGMENTS.MEMBER}/${memberId}`;
+        return this.http.get<Array<PuzzleComment>>(url);
+    }
+
+    saveComment(newComment: PuzzleComment): Observable<PuzzleComment> {
+        return this.http.post<PuzzleComment>(this.baseUrl, newComment);
+    }
+
+    updateComment(commentId: number, editedComment: PuzzleComment): Observable<PuzzleComment> {
+        return this.http.put<PuzzleComment>(`${this.baseUrl}/${commentId}`, editedComment);
+    }
+
+    deleteComment(commentId: number): Observable<any> {
+        return this.http.delete(`${this.baseUrl}/${commentId}`);
+    }
 }

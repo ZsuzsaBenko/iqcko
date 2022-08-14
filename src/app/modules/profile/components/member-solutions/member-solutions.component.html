@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 my-solutions">
+        <h2>Megoldott rejtvények</h2>
+        <button type="button"
+                (click)="toggleVisible()">{{isVisible ? 'Becsukom' : 'Megnézem'}}
+        </button>
+        <ul *ngIf="isVisible && solutionsLoaded && solutions.length">
+            <li *ngFor="let solution of solutions">
+                <a *ngIf="!isAdminPage" routerLink="/puzzles/{{ solution.puzzle.id }}">
+                    <div class="solution-div">
+                        <h3>{{ solution.puzzle.title }}
+                            <span> - {{ translateCategoryFn(solution.puzzle.category) }} |
+                                {{ translateLevelFn(solution.puzzle.level) }}</span>
+                        </h3>
+                        <p>Dátum: <span>{{ solution.submissionTime | date: 'yyyy. MM. dd.' }}</span></p>
+                        <p>Gyorsaság: <span>{{ countSpeed(solution.seconds) }}</span></p>
+                        <div class="category-pic">
+                            <fa-icon [icon]="faQuestion" class="fas"
+                                     *ngIf="categoryEnum.RIDDLE === solution.puzzle.category"></fa-icon>
+                            <fa-icon [icon]="faSquareRootAlt" class="fas"
+                                     *ngIf="categoryEnum.MATH_PUZZLE === solution.puzzle.category"></fa-icon>
+                            <fa-icon [icon]="faDice" class="fas"
+                                     *ngIf="categoryEnum.PICTURE_PUZZLE === solution.puzzle.category"></fa-icon>
+                            <fa-icon [icon]="faFont" class="fas"
+                                     *ngIf="categoryEnum.WORD_PUZZLE === solution.puzzle.category"></fa-icon>
+                            <fa-icon [icon]="faPenFancy" class="fas"
+                                     *ngIf="categoryEnum.CIPHER === solution.puzzle.category"></fa-icon>
+                        </div>
+                    </div>
+                </a>
+
+                <div *ngIf="isAdminPage">
+                    <div class="solution-div">
+                        <h3>{{ solution.puzzle.title }}
+                            <span> - {{ translateCategoryFn(solution.puzzle.category) }} |
+                                {{ translateLevelFn(solution.puzzle.level) }}</span>
+                        </h3>
+                        <p>Dátum: <span>{{ solution.submissionTime | date: 'yyyy. MM. dd.' }}</span></p>
+                        <p>Gyorsaság: <span>{{ countSpeed(solution.seconds) }}</span></p>
+                        <div class="modification">
+                            <fa-icon [icon]="faTrash"
+                                     class="fas"
+                                     (click)="deleteSolution(solution.id)">
+                            </fa-icon>
+                            <a [routerLink]="['/admin/puzzles/update/', solution.puzzle.id]">
+                                <fa-icon [icon]="faEdit" class="fas"></fa-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <p *ngIf="isVisible && solutionsLoaded && !solutions.length" class="empty-list">Nincsenek megoldott rejtvények.</p>
+    </div>
+</div>

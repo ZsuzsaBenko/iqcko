@@ -1,63 +1,54 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-import { AuthService } from './auth.service';
-import { Member } from '../models/Member';
+import { environment } from '../../environments/environment';
+import { API_PATHS } from '../models/constants';
+import { Member } from '../models/interfaces';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class MemberService {
-  baseUrl = 'https://puzzles-app.herokuapp.com/members/';
+    private readonly baseUrl = `${environment.apiUrl}/${API_PATHS.BASE.MEMBERS}`;
 
-
-  constructor(private http: HttpClient) { }
-
-  getTopLeaderBoard(): Observable<Member[]> {
-    const url = this.baseUrl + 'top-leaderboard';
-    return this.http.get<Member[]>(url);
-  }
-
-  getFullLeaderBoard(): Observable<Member[]> {
-    const url = this.baseUrl + 'full-leaderboard';
-    return this.http.get<Member[]>(url);
-  }
-
-  getAllMembers(): Observable<Member[]> {
-    if (!AuthService.isAdmin()) {
-      return null;
+    constructor(private readonly http: HttpClient) {
     }
 
-    const url = this.baseUrl + 'all-members';
-    return this.http.get<Member[]>(url);
-  }
-
-  getLoggedInMemberProfile(): Observable<Member> {
-    const url = this.baseUrl + 'profile';
-    return this.http.get<Member>(url);
-  }
-
-  updateLoggedInMemberProfile(member: Member): Observable<Member> {
-    const url = this.baseUrl + 'profile/update';
-    return this.http.put<Member>(url, member);
-  }
-
-  updateMember(id: number, member: Member): Observable<Member> {
-    if (!AuthService.isAdmin()) {
-      return null;
+    getTopLeaderBoard(): Observable<Array<Member>> {
+        const url = `${this.baseUrl}/${API_PATHS.SEGMENTS.TOP_LEADERBOARD}`;
+        return this.http.get<Array<Member>>(url);
     }
 
-    const url = this.baseUrl + 'update/' + id;
-    return this.http.put<Member>(url, member);
-  }
-
-  deleteMember(id: number): Observable<any> {
-    if (!AuthService.isAdmin()) {
-      return null;
+    getFullLeaderBoard(): Observable<Array<Member>> {
+        const url = `${this.baseUrl}/${API_PATHS.SEGMENTS.FULL_LEADERBOARD}`;
+        return this.http.get<Array<Member>>(url);
     }
 
-    const url = this.baseUrl + 'delete/' + id;
-    return this.http.delete(url);
-  }
+    getLoggedInMemberProfile(): Observable<Member> {
+        const url = `${this.baseUrl}/${API_PATHS.SEGMENTS.LOGGED_IN}`;
+        return this.http.get<Member>(url);
+    }
+
+    getMemberById(id: number): Observable<Member> {
+        const url = `${this.baseUrl}/${id}`;
+        return this.http.get<Member>(url);
+    }
+
+    getAllMembers(): Observable<Array<Member>> {
+        const url = `${this.baseUrl}/${API_PATHS.SEGMENTS.ADMIN}`;
+        return this.http.get<Array<Member>>(url);
+    }
+
+    updateLoggedInMemberProfile(member: Member): Observable<Member> {
+        const url = `${this.baseUrl}/${API_PATHS.SEGMENTS.LOGGED_IN}`;
+        return this.http.put<Member>(url, member);
+    }
+
+    updateMember(id: number, member: Member): Observable<Member> {
+        return this.http.put<Member>(`${this.baseUrl}/${id}`, member);
+    }
+
+    deleteMember(id: number): Observable<any>  {
+       return this.http.delete(`${this.baseUrl}/${id}`);
+    }
 }

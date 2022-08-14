@@ -1,102 +1,143 @@
 html {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  font-family: 'PT Serif', serif;
-  background-image: url("assets/puzzle-700382_1280.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
-  background-attachment: fixed;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: 'PT Serif', serif;
+    background-image: url("assets/puzzle-700382_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
 }
 
 .error {
-  width: 320px;
-  margin: 100px auto;
-  padding: 20px;
-  background-color: #333333;
-  color: #f0fff0;
-  border: 5px solid #b22222;
-  border-radius: 10px;
-  font-size: 20px;
-  text-align: center;
+    width: 320px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #333333;
+    color: #f0fff0;
+    border: 5px solid #b22222;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .spinner {
-  display: block;
-  color: #00b300;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
+    display: block;
+    color: #00b300;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
 }
 
 input {
-  background-color: #333333;
-  border: none;
-  border-bottom: 1px solid #00b300;
-  padding: 5px;
-  transition: background-color, border-radius 1s, 0.2s;
-  font-size: 18px;
-  text-align: center;
-  color: #f0fff0;
+    background-color: #333333;
+    border: none;
+    border-bottom: 1px solid #00b300;
+    padding: 5px;
+    transition: background-color, border-radius 1s, 0.2s;
+    font-size: 18px;
+    text-align: center;
+    color: #f0fff0;
 }
 
 input:hover {
-  background-color: #f0fff0;
-  border-radius: 10px;
-  color: #333333;
+    background-color: #f0fff0;
+    border-radius: 10px;
+    color: #333333;
 }
 
 input:focus {
-  background-color: #f0fff0;
-  color: #333333;
-  border-radius: 10px;
+    background-color: #f0fff0;
+    color: #333333;
+    border-radius: 10px;
 }
 
 input.ng-invalid.ng-touched {
-  background-color: #f0fff0;
-  color: #333333;
-  border: 2px solid #b22222;
-  border-radius: 10px;
+    background-color: #f0fff0;
+    color: #333333;
+    border: 2px solid #b22222;
+    border-radius: 10px;
+}
+
+input:focus, input:focus-visible,
+textarea:focus, textarea:focus-visible,
+select:focus, select:focus-visible,
+span:focus-visible {
+    outline: none;
 }
 
 textarea {
-  padding: 10px;
-  background-color: #444444;
-  border: 2px solid #00b300;
-  color: #f0fff0;
-  border-radius: 10px;
+    padding: 10px;
+    background-color: #444444;
+    border: 2px solid #00b300;
+    color: #f0fff0;
+    border-radius: 10px;
 }
 
 select {
-  padding: 5px;
-  border: 1px solid #00b300;
-  border-radius: 10px;
-  background-color: #f0fff0;
-  color: #333333;
+    padding: 5px;
+    border: 1px solid #00b300;
+    border-radius: 10px;
+    background-color: #f0fff0;
+    color: #333333;
 }
 
 button {
-  padding: 10px;
-  background-color: #00b300;
-  color: #333333;
-  font-weight: bold;
-  border-radius: 10px;
-  border: none;
-  transition: background-color 1s;
+    padding: 10px;
+    background-color: #00b300;
+    color: #333333;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    transition: background-color 500ms;
 }
 
 button:hover {
-  background-color: #f0fff0;
+    background-color: #f0fff0;
 }
 
 button:disabled {
-  background-color: #b22222;
-  color: #f0fff0;
+    background-color: #b2e089;
+    color: #555555;
+}
+
+
+ngb-rating span.visually-hidden {
+    opacity: 0;
+    height: 0;
+    width: 5px;
+    z-index: -1;
+}
+
+ngb-modal-window.modal.show {
+    z-index: 2000 !important;
+}
+
+ngb-modal-window.modal.show .modal-content {
+    background-color: #f0fff0;
+    border-radius: 10px;
+}
+
+ngb-modal-window.modal.show .modal-body p {
+    color: #333333;
+    font-weight: bold;
+}
+
+ngb-modal-window.modal.show .modal-footer button {
+    outline: none;
+    min-width: 72px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    ngb-modal-window.modal.show .modal-content {
+        width: 96vw;
+    }
 }

@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-import { Member } from '../models/Member';
-
+import { environment } from '../../environments/environment';
+import { API_PATHS } from '../models/constants';
+import { Member } from '../models/interfaces';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class RegistrationService {
-  url = 'https://puzzles-app.herokuapp.com/registration';
+    private readonly url = `${environment.apiUrl}/${API_PATHS.REGISTRATION}`;
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private readonly http: HttpClient) {
+    }
 
-  registerNewMember(member: Member): Observable<Member> {
-    return this.http.post<Member>(this.url, member);
-  }
+    registerNewMember(member: Partial<Member>): Observable<Member> {
+        return this.http.post<Member>(this.url, member);
+    }
 }

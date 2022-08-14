@@ -1,0 +1,37 @@
+.admin-container {
+    margin-top: 50px;
+    height: calc(100% - 50px);
+    padding: 0;
+}
+
+.puzzles-container {
+    margin: 50px auto;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #333333;
+}
+
+h1 {
+    text-align: center;
+    margin: 30px auto 50px;
+    color: #00b300;
+}
+
+.puzzleDiv:first-child {
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 700px) {
+    .puzzleDiv .modification {
+        width: 80px;
+        height: 50px;
+        margin: 0 auto;
+        position: static;
+    }
+
+    .modification fa-icon {
+        margin-right: 20px;
+    }
+}
+
+

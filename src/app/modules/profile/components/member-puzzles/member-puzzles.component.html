@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 my-puzzles">
+        <h2>{{isAdminPage ? member.username + ' rejtvényei' : 'Saját rejtvények'}}</h2>
+        <button type="button"
+                (click)="toggleVisible()">{{isVisible ? 'Becsukom' : 'Megnézem'}}
+        </button>
+        <ul *ngIf="isVisible && puzzlesLoaded && puzzles.length">
+            <li *ngFor="let puzzle of puzzles">
+                <a routerLink="/puzzles/{{ puzzle.id }}">
+                    <div class="puzzle-div">
+                        <h3>{{ puzzle.title }}
+                            <span> - {{ translateCategoryFn(puzzle.category) }} |
+                                {{ translateLevelFn(puzzle.level) }}</span>
+                        </h3>
+                        <p>Dátum: <span>{{ puzzle.submissionTime | date: 'yyyy. MM. dd.' }}</span></p>
+                        <p class="rating"> Értékelés:
+                            <app-stars [puzzle]="puzzle"></app-stars>
+                        </p>
+                        <div class="category-pic">
+                            <fa-icon [icon]="faQuestion" class="fas"
+                                     *ngIf="categoryEnum.RIDDLE === puzzle.category"></fa-icon>
+                            <fa-icon [icon]="faSquareRootAlt" class="fas"
+                                     *ngIf="categoryEnum.MATH_PUZZLE === puzzle.category"></fa-icon>
+                            <fa-icon [icon]="faDice" class="fas"
+                                     *ngIf="categoryEnum.PICTURE_PUZZLE === puzzle.category"></fa-icon>
+                            <fa-icon [icon]="faFont" class="fas"
+                                     *ngIf="categoryEnum.WORD_PUZZLE === puzzle.category"></fa-icon>
+                            <fa-icon [icon]="faPenFancy" class="fas"
+                                     *ngIf="categoryEnum.CIPHER === puzzle.category"></fa-icon>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <p *ngIf="isVisible && puzzlesLoaded && !puzzles.length" class="empty-list">Nincsenek saját rejtvények.</p>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="reg-login-container">
+    <button (click)="showLoginForm()" class="load-btn"
+            [ngClass]="{'active-btn': isLogin}" id="load-login">Bejelentkezés
+    </button>
+    <button (click)="showRegistrationForm()" class="load-btn"
+            [ngClass]="{'active-btn': !isLogin}" id="load-reg">Regisztráció
+    </button>
+    <div>
+        <p id="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+        <p id="success-message" *ngIf="registrationSuccessMessage && !errorMessage">{{ registrationSuccessMessage }}</p>
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <label [hidden]="isLogin" for="username">Felhasználónév: </label>
+            <input [hidden]="isLogin"
+                   type="text"
+                   id="username"
+                   name="username"
+                   ngModel
+                   [required]="!isLogin">
+            <label for="email">Email cím: </label>
+            <input type="text"
+                   id="email"
+                   name="email"
+                   ngModel
+                   required
+                   email>
+            <label for="password">Jelszó: </label>
+            <input type="password"
+                   id="password"
+                   name="password"
+                   ngModel
+                   required
+                   [placeholder]="!isLogin ? 'Legalább 8 karakter.' : ''"
+                   [minlength]="!isLogin ? 8 : null">
+            <button *ngIf="isLogin" type="submit" [disabled]="(form.invalid && form.dirty) || submitted">
+                Bejelentkezés
+            </button>
+            <button *ngIf="!isLogin" type="submit" [disabled]="(form.invalid && form.dirty) || submitted">
+                Regisztráció
+            </button>
+        </form>
+    </div>
+</div>

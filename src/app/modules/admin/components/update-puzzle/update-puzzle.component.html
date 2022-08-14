@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row">
+        <div *ngIf="puzzle" class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 form-container">
+            <h2>Rejtvény szerkesztése</h2>
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                <label for="puzzle-edit-title">Cím:</label>
+                <input type="text"
+                       id="puzzle-edit-title"
+                       name="puzzle-edit-title"
+                       required
+                       [(ngModel)]="puzzle.title">
+                <label for="puzzle-edit-category">Kategória:</label>
+                <input type="text"
+                       id="puzzle-edit-category"
+                       value="{{translateCategoryFn(puzzle.category)}}"
+                       disabled>
+                <label for="puzzle-edit-instruction">Instrukció:</label>
+                <textarea id="puzzle-edit-instruction"
+                          name="puzzle-edit-instruction"
+                          required
+                          [(ngModel)]="puzzle.instruction"
+                          [disabled]="isCipher">
+                </textarea>
+                <label *ngIf="!isPicturePuzzle" for="puzzle-edit-item">Feladvány:</label>
+                <textarea *ngIf="!isPicturePuzzle"
+                          id="puzzle-edit-item"
+                          name="puzzle-edit-item"
+                          required
+                          [(ngModel)]="puzzle.puzzleItem"
+                          [disabled]="isCipher">
+                </textarea>
+                <img *ngIf="isPicturePuzzle"
+                     src="https://firebasestorage.googleapis.com/v0/b/puzzles-a6dd7.appspot.com/o/{{ puzzle.puzzleItem }}"
+                     alt="puzzle">
+                <label for="puzzle-edit-answer">Helyes válasz:</label>
+                <input type="text"
+                       id="puzzle-edit-answer"
+                       name="puzzle-edit-answer"
+                       required
+                       [(ngModel)]="puzzle.answer"
+                       [disabled]="isCipher">
+                <label for="puzzle-edit-level">Nehézség:</label>
+                <input type="text"
+                       id="puzzle-edit-level"
+                       value="{{translateLevelFn(puzzle.level)}}"
+                       disabled>
+                <button type="submit" [disabled]="form.pristine || form.invalid">Küldés</button>
+            </form>
+        </div>
+    </div>
+</div>

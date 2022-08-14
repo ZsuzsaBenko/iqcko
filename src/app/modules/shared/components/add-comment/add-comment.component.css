@@ -1,0 +1,64 @@
+textarea, label, button {
+    display: block;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+label {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+label.checkbox-label:before {
+    content: "";
+    position: absolute;
+    left: -12px;
+    top: 5px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #00b300;
+    border-radius: 2px;
+    background-color: #f0fff0;
+    transition: all 500ms;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked ~ label.checkbox-label:before {
+    content: "\2714";
+    line-height: 12px;
+    font-size: 17px;
+    color: #00b300;
+}
+
+textarea {
+    width: 70%;
+    height: 150px;
+    margin: 0 auto;
+}
+
+button {
+    margin: 20px auto;
+    padding: 10px;
+}
+
+#agreement-box {
+    width: 70%;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+}
+
+#agreement-box label {
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+    textarea {
+        width: 90%;
+    }
+}

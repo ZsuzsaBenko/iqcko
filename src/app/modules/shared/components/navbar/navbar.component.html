@@ -1,0 +1,76 @@
+<nav class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                <li id="logo"><a routerLink="/home">IQckó</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <fa-icon [icon]="faUser" class="fas"></fa-icon>
+                        <fa-icon [icon]="faCaretDown" class="fas fa-caret-down"></fa-icon>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" routerLink="/profile">
+                            <span><fa-icon [icon]="faUserCircle" class="fas"></fa-icon>Profilom</span>
+                        </a>
+                        <a class="dropdown-item" routerLink="/puzzles/add">
+                            <span><fa-icon [icon]="faCloudUploadAlt" class="fas"></fa-icon>Új rejtvény</span>
+                        </a>
+                        <a class="dropdown-item" (click)="logout()">
+                            <span><fa-icon [icon]="faSignOutAlt" class="fas"></fa-icon>Kijelentkezés</span>
+                        </a>
+                    </div>
+                </li>
+                <li *ngIf="isAdmin" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <fa-icon [icon]="faUnlockAlt" class="fas"></fa-icon>
+                        <fa-icon [icon]="faCaretDown" class="fas fa-caret-down"></fa-icon>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" routerLink="/admin/members">
+                            <span><fa-icon [icon]="faUserCircle" class="fas"></fa-icon>Felhasználók</span>
+                        </a>
+                        <a class="dropdown-item" routerLink="/admin/puzzles">
+                            <span><fa-icon [icon]="faPuzzlePiece" class="fas"></fa-icon>Rejtvények</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <fa-icon [icon]="faPuzzlePiece" class="fas"></fa-icon>
+                        <fa-icon [icon]="faCaretDown" class="fas fa-caret-down"></fa-icon>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" routerLink="/puzzles/riddles">
+                                <span><fa-icon [icon]="faQuestion"
+                                               class="fas"></fa-icon>Fejtörők, találós kérdések</span>
+                            </a>
+                            <a class="dropdown-item" routerLink="/puzzles/math-puzzles">
+                                <span><fa-icon [icon]="faSquareRootAlt"
+                                               class="fas"></fa-icon>Matematikai feladványok</span>
+                            </a>
+                            <a class="dropdown-item" routerLink="/puzzles/picture-puzzles">
+                                <span><fa-icon [icon]="faDice" class="fas"></fa-icon>Képrejtvények</span>
+                            </a>
+                            <a class="dropdown-item" routerLink="/puzzles/word-puzzles">
+                                <span><fa-icon [icon]="faFont" class="fas"></fa-icon>Nyelvi játékok</span>
+                            </a>
+                            <a class="dropdown-item" routerLink="/puzzles/ciphers">
+                                <span><fa-icon [icon]="faPenFancy" class="fas"></fa-icon>Titkosírás</span>
+                            </a>
+                            <a class="dropdown-item" routerLink="/puzzles/all">
+                                <span><fa-icon [icon]="faPuzzlePiece" class="fas"></fa-icon>Összes rejtvény</span>
+                            </a>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/home">
+                        <fa-icon [icon]="faHome" class="fas"></fa-icon>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

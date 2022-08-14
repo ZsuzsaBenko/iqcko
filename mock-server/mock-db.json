@@ -1,0 +1,832 @@
+{
+    "all-members": [
+        {
+            "id": 1,
+            "username": "Admin",
+            "email": "admin@gmail.hu",
+            "registration": "2020-01-27T19:03:36.00026",
+            "score": 0
+        },
+        {
+            "id": 2,
+            "username": "Anna",
+            "email": "anna@gmail.com",
+            "registration": "2021-08-11T18:26:53.647833",
+            "score": 210
+        },
+        {
+            "id": 3,
+            "username": "Andris",
+            "email": "andris@gmail.com",
+            "registration": "2021-02-07T18:28:14.907716",
+            "score": 190
+        },
+        {
+            "id": 4,
+            "username": "Brigi",
+            "email": "brigi@gmail.com",
+            "registration": "2020-10-11T14:23:58.020616",
+            "score": 90
+        },
+        {
+            "id": 5,
+            "username": "Eszter",
+            "email": "eszter@gmail.com",
+            "registration": "2020-03-21T18:33:04.038252",
+            "score": 90
+        },
+        {
+            "id": 6,
+            "username": "Márk",
+            "email": "mark@gmail.com",
+            "registration": "2022-01-06T13:48:04.524081",
+            "score": 90
+        },
+        {
+            "id": 7,
+            "username": "Robi",
+            "email": "robi@gmail.com",
+            "registration": "2021-11-18T13:32:10.764984",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "username": "Evelin",
+            "email": "evelin@gmail.hu",
+            "registration": "2020-10-20T14:09:13.878862",
+            "score": 40
+        },
+        {
+            "id": 9,
+            "username": "Kati",
+            "email": "kati@gmail.com",
+            "registration": "2020-10-13T13:09:35.858941",
+            "score": 30
+        },
+        {
+            "id": 10,
+            "username": "Éva",
+            "email": "eva@gmail.com",
+            "registration": "2020-10-13T12:49:41.715698",
+            "score": 20
+        },
+        {
+            "id": 11,
+            "username": "Csabi",
+            "email": "csabi@gmail.com",
+            "registration": "2020-09-30T20:26:00.24601",
+            "score": 20
+        },
+        {
+            "id": 12,
+            "username": "Boti",
+            "email": "boti@gmail.com",
+            "registration": "2021-09-30T10:01:53.340516",
+            "score": 10
+        }
+    ],
+    "all-puzzles": [
+        {
+            "id": 1,
+            "category": "WORD_PUZZLE",
+            "title": "Hideg ellen véd",
+            "instruction": "Válaszolj egy szóval!",
+            "puzzleItem": "Melyik karó véd a hideg ellen?",
+            "level": "EASY",
+            "submissionTime": "2020-04-22T19:23:22.528094",
+            "rating": 0.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 2,
+            "category": "WORD_PUZZLE",
+            "title": "Vásár",
+            "instruction": "Válaszolj egy szóval!",
+            "puzzleItem": "Milyen fa van legtöbb a vásárban?",
+            "level": "EASY",
+            "submissionTime": "2020-04-22T19:17:20.672329",
+            "rating": 0.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 3,
+            "category": "WORD_PUZZLE",
+            "title": "Képtelen geometria",
+            "instruction": "Válaszolj egy szóval!",
+            "puzzleItem": "Melyik kör lehet szögletes?",
+            "level": "EASY",
+            "submissionTime": "2020-03-28T20:00:30.048748",
+            "rating": 4.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 4,
+            "category": "MATH_PUZZLE",
+            "title": "Béka",
+            "instruction": "Válaszolj egy számmal!",
+            "puzzleItem": "Egy béka beleesett egy 12 méter mély kútba. Fel tudott ugrani 3 métert, de mindegyik ugrásnál vissza is esett 2 métert. Hányat kellett ugrania, hogy kijusson a kútból?",
+            "level": "EASY",
+            "submissionTime": "2019-09-22T20:30:06.437189",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 5,
+            "category": "CIPHER",
+            "title": "Nyelvtörő",
+            "instruction": "Fejtsd meg a titkosírást! Az abc minden betűjét \"arréb toltuk\" valamennyivel.",
+            "puzzleItem": "űdéd űeűűdiő őik űdéd űeűűdiő ed űqó űdéd űeűűdiő.",
+            "level": "EASY",
+            "submissionTime": "2019-09-22T20:31:28.41675",
+            "rating": 3.4,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 6,
+            "category": "WORD_PUZZLE",
+            "title": "Városnév",
+            "instruction": "Milyen szótag egészíti ki mindkét szót a szórejtvény első felében? És a másodikban? Melyik város nevét kapjuk a két szótagból?",
+            "puzzleItem": "1. pál-_____-lom\n2. tar-_____-rus",
+            "level": "MEDIUM",
+            "submissionTime": "2019-09-22T20:33:15.777114",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 7,
+            "category": "RIDDLE",
+            "title": "Használati tárgy (?)",
+            "instruction": "Válaszolj egy szóval!",
+            "puzzleItem": "Aki készíti, annak nem kell. Aki megveszi, az nem használja. Aki használja, nem tud róla. Mi az?",
+            "level": "EASY",
+            "submissionTime": "2019-09-23T11:48:47.323091",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 8,
+            "category": "MATH_PUZZLE",
+            "title": "Zoknik",
+            "instruction": "Válaszolj egy számmal!",
+            "puzzleItem": "A fiókban van 14 barna zokni, 14 kék zokni és 14 fekete zokni. Hány zoknit kell kivenned (csukott szemmel), hogy biztosan legyen köztük két azonos színű?",
+            "level": "EASY",
+            "submissionTime": "2019-09-23T11:49:52.05689",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 9,
+            "category": "PICTURE_PUZZLE",
+            "title": "Négyzetek",
+            "instruction": "Hány négyzet van a képen? Válaszolj egy számmal!",
+            "puzzleItem": "squares40.png?alt=media&token=8a9b93b4-127a-4e4d-9d56-d7900e2e0f5d",
+            "level": "MEDIUM",
+            "submissionTime": "2019-09-23T11:51:24.172118",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 10,
+            "category": "RIDDLE",
+            "title": "Létkérdés",
+            "instruction": "Válaszolj egy szóval!",
+            "puzzleItem": "Nagyobb Istennél, gonoszabb az ördögnél, a szegénynek van, a gazdagnak szüksége van rá, és aki ezt eszi, meghal - mi az?",
+            "level": "EASY",
+            "submissionTime": "2019-09-23T11:53:37.462763",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 11,
+            "category": "RIDDLE",
+            "title": "Napok",
+            "instruction": "Válaszolj három szóval, vesszővel és szóközzel válaszd el őket!",
+            "puzzleItem": "Meg tudsz nevezni három egymást követő napot anélkül, hogy használnád a hétfő, kedd, szerda, csütörtök, péntek, szombat és vasárnap szavakat?",
+            "level": "EASY",
+            "submissionTime": "2019-09-23T11:55:38.487242",
+            "rating": 4.9,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 12,
+            "category": "MATH_PUZZLE",
+            "title": "Virágok és méhecskék",
+            "instruction": "Válaszolj két számmal: méhek száma, virágok száma (pl. 1, 2)!",
+            "puzzleItem": "Egy ágyásban van néhány virág, és néhány méhecske ül rajtuk. Hányan vannak a méhecskék és a virágok, ha igaz mindkét állítás:\n1. ha minden virágra egy méh száll, egy méhecskének nem jut virág,\n2. ha két méh osztozik egy virágon, egy virág üresen marad?",
+            "level": "EASY",
+            "submissionTime": "2019-09-23T11:58:08.716247",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 13,
+            "category": "MATH_PUZZLE",
+            "title": "Korkérdés",
+            "instruction": "Válaszolj két számmal: Bill életkora, a fia életkora (pl. 20, 2)!",
+            "puzzleItem": "8 évvel ezelőtt Bill 8-szor annyi idős volt, mint a kisfia. Ma, ha összeadjuk a korukat, 52-t kapunk. Hány éves Bill és a fia?",
+            "level": "EASY",
+            "submissionTime": "2019-09-23T12:00:03.571001",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 14,
+            "category": "MATH_PUZZLE",
+            "title": "Számjegyek",
+            "instruction": "Válaszolj egy számmal!",
+            "puzzleItem": "Melyik az a négyjegyű szám, amiben az első számjegy egy-ötöde az utolsónak, a két középső számjegy együttesen pedig a szélső számjegyek összege 3-mal szorozva?",
+            "level": "EASY",
+            "submissionTime": "2019-09-23T12:01:55.169941",
+            "rating": 4.3,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 15,
+            "category": "PICTURE_PUZZLE",
+            "title": "Piramis",
+            "instruction": "Melyik a piramis felülnézetből? Válaszolj egy számmal!",
+            "puzzleItem": "piramis.jpg?alt=media&token=15d66ee3-fafa-489d-8374-d6f60b97f82d",
+            "level": "EASY",
+            "submissionTime": "2019-09-23T12:02:57.572957",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 16,
+            "category": "PICTURE_PUZZLE",
+            "title": "Számok",
+            "instruction": "Hány számot látsz a képen?",
+            "puzzleItem": "numbers.jpg?alt=media&token=bd8560fc-e55d-4489-88df-69fd6c097c93",
+            "level": "EASY",
+            "submissionTime": "2019-09-23T12:04:24.742405",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 17,
+            "category": "PICTURE_PUZZLE",
+            "title": "Virágok",
+            "instruction": "Válaszolj egy számmal!",
+            "puzzleItem": "flowers.jpg?alt=media&token=04c292b3-53a6-4bc8-867d-06b7439f21dc",
+            "level": "MEDIUM",
+            "submissionTime": "2019-09-23T12:07:19.91581",
+            "rating": 4.7,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 18,
+            "category": "RIDDLE",
+            "title": "Trükkös számsor",
+            "instruction": "Válaszolj egy számmal! Melyik a számsor következő eleme?",
+            "puzzleItem": "1, 4, 5, 6, 7, 8, 10, 20, ?",
+            "level": "EASY",
+            "submissionTime": "2019-09-23T12:10:25.949493",
+            "rating": 5.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 19,
+            "category": "CIPHER",
+            "title": "Közmondás",
+            "instruction": "Fejtsd meg a titkosírást! Az abc minden betűje egy másik betűnek felel meg, teljesen véletlenszerűen. Egy kis segítség: {á=w, t=s, i=t}. Az egyenlőségjel bal oldalán az eredeti betű áll, a jobb oldalon a titkosírásban használt megfelelője.",
+            "puzzleItem": "üt etgs pcst whxws, yhx nzójjon wzews.",
+            "level": "DIFFICULT",
+            "submissionTime": "2019-09-23T12:12:01.219306",
+            "rating": 0.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        },
+        {
+            "id": 20,
+            "category": "CIPHER",
+            "title": "Egyház",
+            "instruction": "Fejtsd meg a titkosírást! Az abc minden betűje egy másik betűnek felel meg, teljesen véletlenszerűen. Egy kis segítség: {a=l, g=é, z=ő}. Az egyenlőségjel bal oldalán az eredeti betű áll, a jobb oldalon a titkosírásban használt megfelelője.",
+            "puzzleItem": "iőwénáv lő wíqnőihl, rlél cldláéyő l jlj.",
+            "level": "DIFFICULT",
+            "submissionTime": "2019-09-23T12:12:59.566438",
+            "rating": 0.0,
+            "answer": "Helyes válasz :)",
+            "member": {
+                "id": 1,
+                "username": "Admin",
+                "score": 0
+            }
+        }
+    ],
+    "full-leaderboard": [
+        {
+            "id": 2,
+            "username": "Anna",
+            "score": 210
+        },
+        {
+            "id": 3,
+            "username": "Andris",
+            "score": 190
+        },
+        {
+            "id": 4,
+            "username": "Brigi",
+            "score": 90
+        },
+        {
+            "id": 5,
+            "username": "Eszter",
+            "score": 90
+        },
+        {
+            "id": 6,
+            "username": "Márk",
+            "score": 90
+        },
+        {
+            "id": 7,
+            "username": "Robi",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "username": "Evelin",
+            "score": 40
+        },
+        {
+            "id": 9,
+            "username": "Kati",
+            "score": 30
+        },
+        {
+            "id": 10,
+            "username": "Éva",
+            "score": 20
+        },
+        {
+            "id": 11,
+            "username": "Csabi",
+            "score": 20
+        },
+        {
+            "id": 12,
+            "username": "Boti",
+            "score": 10
+        },
+        {
+            "id": 1,
+            "username": "Admin",
+            "score": 0
+        }
+    ],
+    "all-solutions": [
+        {
+            "id": 1,
+            "submissionTime": "2022-02-27T19:12:48.347874",
+            "seconds": 115,
+            "rating": 5,
+            "puzzle": {
+                "id": 4,
+                "category": "MATH_PUZZLE",
+                "title": "Béka",
+                "instruction": "Válaszolj egy számmal!",
+                "puzzleItem": "Egy béka beleesett egy 12 méter mély kútba. Fel tudott ugrani 3 métert, de mindegyik ugrásnál vissza is esett 2 métert. Hányat kellett ugrania, hogy kijusson a kútból?",
+                "answer": "10",
+                "level": "EASY",
+                "submissionTime": "2019-09-22T20:30:06.437189",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "email": "admin@gmail.hu",
+                    "registration": "2020-01-27T19:03:36.00026",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 2,
+                "username": "Anna",
+                "email": "anna@gmail.com",
+                "registration": "2021-08-11T18:26:53.647833",
+                "score": 210
+            }
+        },
+        {
+            "id": 2,
+            "submissionTime": "2022-02-27T19:10:36.986313",
+            "seconds": 106,
+            "rating": 5,
+            "puzzle": {
+                "id": 10,
+                "category": "RIDDLE",
+                "title": "Létkérdés",
+                "instruction": "Válaszolj egy szóval!",
+                "puzzleItem": "Nagyobb Istennél, gonoszabb az ördögnél, a szegénynek van, a gazdagnak szüksége van rá, és aki ezt eszi, meghal - mi az?",
+                "answer": "semmi",
+                "level": "EASY",
+                "submissionTime": "2019-09-23T11:53:37.462763",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "email": "admin@gmail.hu",
+                    "registration": "2020-01-27T19:03:36.00026",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 2,
+                "username": "Anna",
+                "email": "anna@gmail.com",
+                "registration": "2021-08-11T18:26:53.647833",
+                "score": 210
+            }
+        },
+        {
+            "id": 3,
+            "submissionTime": "2022-02-27T19:08:46.963118",
+            "seconds": 135,
+            "rating": 5,
+            "puzzle": {
+                "id": 11,
+                "category": "RIDDLE",
+                "title": "Napok",
+                "instruction": "Válaszolj három szóval, vesszővel és szóközzel válaszd el őket!",
+                "puzzleItem": "Meg tudsz nevezni három egymást követő napot anélkül, hogy használnád a hétfő, kedd, szerda, csütörtök, péntek, szombat és vasárnap szavakat?",
+                "answer": "tegnap, ma, holnap",
+                "level": "EASY",
+                "submissionTime": "2019-09-23T11:55:38.487242",
+                "rating": 4.9,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "email": "admin@gmail.hu",
+                    "registration": "2020-01-27T19:03:36.00026",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 2,
+                "username": "Anna",
+                "email": "anna@gmail.com",
+                "registration": "2021-08-11T18:26:53.647833",
+                "score": 210
+            }
+        },
+        {
+            "id": 4,
+            "submissionTime": "2022-02-27T19:06:27.240745",
+            "seconds": 115,
+            "rating": 5,
+            "puzzle": {
+                "id": 7,
+                "category": "RIDDLE",
+                "title": "Használati tárgy (?)",
+                "instruction": "Válaszolj egy szóval!",
+                "puzzleItem": "Aki készíti, annak nem kell. Aki megveszi, az nem használja. Aki használja, nem tud róla. Mi az?",
+                "answer": "koporsó",
+                "level": "EASY",
+                "submissionTime": "2019-09-23T11:48:47.323091",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "email": "admin@gmail.hu",
+                    "registration": "2020-01-27T19:03:36.00026",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 2,
+                "username": "Anna",
+                "email": "anna@gmail.com",
+                "registration": "2021-08-11T18:26:53.647833",
+                "score": 210
+            }
+        },
+        {
+            "id": 5,
+            "submissionTime": "2022-02-27T19:12:48.347874",
+            "seconds": 100,
+            "rating": 4,
+            "puzzle": {
+                "id": 4,
+                "category": "MATH_PUZZLE",
+                "title": "Béka",
+                "instruction": "Válaszolj egy számmal!",
+                "puzzleItem": "Egy béka beleesett egy 12 méter mély kútba. Fel tudott ugrani 3 métert, de mindegyik ugrásnál vissza is esett 2 métert. Hányat kellett ugrania, hogy kijusson a kútból?",
+                "answer": "10",
+                "level": "EASY",
+                "submissionTime": "2019-09-22T20:30:06.437189",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "email": "admin@gmail.hu",
+                    "registration": "2020-01-27T19:03:36.00026",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 3,
+                "username": "Andris",
+                "email": "andris@gmail.com",
+                "registration": "2021-02-07T18:28:14.907716",
+                "score": 190
+            }
+        },
+        {
+            "id": 6,
+            "submissionTime": "2022-02-27T19:12:48.347874",
+            "seconds": 105,
+            "rating": 5,
+            "puzzle": {
+                "id": 4,
+                "category": "MATH_PUZZLE",
+                "title": "Béka",
+                "instruction": "Válaszolj egy számmal!",
+                "puzzleItem": "Egy béka beleesett egy 12 méter mély kútba. Fel tudott ugrani 3 métert, de mindegyik ugrásnál vissza is esett 2 métert. Hányat kellett ugrania, hogy kijusson a kútból?",
+                "answer": "10",
+                "level": "EASY",
+                "submissionTime": "2019-09-22T20:30:06.437189",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "email": "admin@gmail.hu",
+                    "registration": "2020-01-27T19:03:36.00026",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 4,
+                "username": "Brigi",
+                "email": "brigi@gmail.com",
+                "registration": "2020-10-11T14:23:58.020616",
+                "score": 90
+            }
+        },
+        {
+            "id": 7,
+            "submissionTime": "2022-02-27T19:12:48.347874",
+            "seconds": 200,
+            "rating": 4,
+            "puzzle": {
+                "id": 9,
+                "category": "PICTURE_PUZZLE",
+                "title": "Négyzetek",
+                "instruction": "Hány négyzet van a képen? Válaszolj egy számmal!",
+                "puzzleItem": "squares40.png?alt=media&token=8a9b93b4-127a-4e4d-9d56-d7900e2e0f5d",
+                "level": "MEDIUM",
+                "submissionTime": "2019-09-23T11:51:24.172118",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 4,
+                "username": "Brigi",
+                "email": "brigi@gmail.com",
+                "registration": "2020-10-11T14:23:58.020616",
+                "score": 90
+            }
+        },
+        {
+            "id": 8,
+            "submissionTime": "2022-02-27T19:12:48.347874",
+            "seconds": 175,
+            "rating": 5,
+            "puzzle": {
+                "id": 9,
+                "category": "PICTURE_PUZZLE",
+                "title": "Négyzetek",
+                "instruction": "Hány négyzet van a képen? Válaszolj egy számmal!",
+                "puzzleItem": "squares40.png?alt=media&token=8a9b93b4-127a-4e4d-9d56-d7900e2e0f5d",
+                "level": "MEDIUM",
+                "submissionTime": "2019-09-23T11:51:24.172118",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 3,
+                "username": "Andris",
+                "email": "andris@gmail.com",
+                "registration": "2021-02-07T18:28:14.907716",
+                "score": 190
+            }
+        }
+    ],
+    "all-comments": [
+        {
+            "id": 1,
+            "message": "Ez nem könnyű!",
+            "submissionTime": "2022-02-27T19:12:48.347874",
+            "puzzle": {
+                "id": 9,
+                "category": "PICTURE_PUZZLE",
+                "title": "Négyzetek",
+                "instruction": "Hány négyzet van a képen? Válaszolj egy számmal!",
+                "puzzleItem": "squares40.png?alt=media&token=8a9b93b4-127a-4e4d-9d56-d7900e2e0f5d",
+                "level": "MEDIUM",
+                "submissionTime": "2019-09-23T11:51:24.172118",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 3,
+                "username": "Andris",
+                "email": "andris@gmail.com",
+                "registration": "2021-02-07T18:28:14.907716",
+                "score": 190
+            }
+        },
+        {
+            "id": 2,
+            "message": "Szerintem se.",
+            "submissionTime": "2022-02-27T20:12:48.347874",
+            "puzzle": {
+                "id": 9,
+                "category": "PICTURE_PUZZLE",
+                "title": "Négyzetek",
+                "instruction": "Hány négyzet van a képen? Válaszolj egy számmal!",
+                "puzzleItem": "squares40.png?alt=media&token=8a9b93b4-127a-4e4d-9d56-d7900e2e0f5d",
+                "level": "MEDIUM",
+                "submissionTime": "2019-09-23T11:51:24.172118",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 2,
+                "username": "Anna",
+                "email": "anna@gmail.com",
+                "registration": "2021-08-11T18:26:53.647833",
+                "score": 210
+            }
+        },
+        {
+            "id": 3,
+            "message": "Szegény béka! :)",
+            "submissionTime": "2022-02-27T20:12:48.347874",
+            "puzzle": {
+                "id": 4,
+                "category": "MATH_PUZZLE",
+                "title": "Béka",
+                "instruction": "Válaszolj egy számmal!",
+                "puzzleItem": "Egy béka beleesett egy 12 méter mély kútba. Fel tudott ugrani 3 métert, de mindegyik ugrásnál vissza is esett 2 métert. Hányat kellett ugrania, hogy kijusson a kútból?",
+                "answer": "10",
+                "level": "EASY",
+                "submissionTime": "2019-09-22T20:30:06.437189",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "email": "admin@gmail.hu",
+                    "registration": "2020-01-27T19:03:36.00026",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 3,
+                "username": "Andris",
+                "email": "andris@gmail.com",
+                "registration": "2021-02-07T18:28:14.907716",
+                "score": 190
+            }
+        },
+        {
+            "id": 4,
+            "message": ":)))",
+            "submissionTime": "2022-02-28T20:12:48.347874",
+            "puzzle": {
+                "id": 4,
+                "category": "MATH_PUZZLE",
+                "title": "Béka",
+                "instruction": "Válaszolj egy számmal!",
+                "puzzleItem": "Egy béka beleesett egy 12 méter mély kútba. Fel tudott ugrani 3 métert, de mindegyik ugrásnál vissza is esett 2 métert. Hányat kellett ugrania, hogy kijusson a kútból?",
+                "answer": "10",
+                "level": "EASY",
+                "submissionTime": "2019-09-22T20:30:06.437189",
+                "rating": 5.0,
+                "member": {
+                    "id": 1,
+                    "username": "Admin",
+                    "email": "admin@gmail.hu",
+                    "registration": "2020-01-27T19:03:36.00026",
+                    "score": 0
+                }
+            },
+            "member": {
+                "id": 2,
+                "username": "Anna",
+                "email": "anna@gmail.com",
+                "registration": "2021-08-11T18:26:53.647833",
+                "score": 210
+            }
+        }
+    ]
+}
